@@ -1,0 +1,186 @@
+import { AuthLayout } from "@/components/templates";
+import { useCallback, useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { Button, Checkbox, Input, SearchCombobox } from "@/components/atoms";
+import { countries } from "country-data-list";
+import Link from "next/link";
+import GEO from "@/lib/api/geo";
+
+type TUserType = "client" | "freelancer";
+
+const SignUp = () => {
+  const [userType, setUserType] = useState<TUserType>("client");
+  const [currentStep, setCurrentStep] = useState(0);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("");
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    const fetchCurrentGeo = async () => {
+      const geo = await GEO.get();
+
+      setCountry(
+        countries.all.find((c) => c.alpha2 === geo?.country)?.name ||
+          countries.all[0].name,
+      );
+    };
+    fetchCurrentGeo();
+  }, []);
+
+  const handleOptionSelect = (val: TUserType) => {
+    setCurrentStep(1);
+    setUserType(val);
+  };
+
+  return (
+    <AuthLayout>
+      {currentStep === 0 ? (
+        <>
+          <div className="mb-8 text-center">
+            <h1 className="text-4xl font-bold">Welcome to TalentForge</h1>
+            <p className="mt-4 text-slate-500">Which describes you best?</p>
+          </div>
+          <div className="flex items-center gap-10">
+            <Option value="client" onSelect={handleOptionSelect} />
+            <Option value="freelancer" onSelect={handleOptionSelect} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="text-center">
+            <h1 className="text-4xl">Sign up to hire talent</h1>
+
+            <div className="mt-8 flex items-center gap-6">
+              <button className=""></button>
+              <button className=""></button>
+            </div>
+
+            <div className="mt-8 flex items-center gap-2">
+              <div className="flex-1 h-[1px] bg-slate-200"></div>
+              <span className="text-sm">or</span>
+              <div className="flex-1 h-[1px] bg-slate-200"></div>
+            </div>
+
+            <form
+              className="mt-8 w-full max-w-lg mx-auto flex flex-col gap-6"
+              onSubmit={(e: any) => {
+                e.preventDefault();
+              }}
+            >
+              <div className="w-full flex items-center gap-4">
+                <Input
+                  type="text"
+                  label="First name"
+                  name="firstName"
+                  classname="flex-1"
+                  value={firstName}
+                  onChange={setFirstName}
+                />
+
+                <Input
+                  type="text"
+                  label="Last name"
+                  name="lastName"
+                  classname="flex-1"
+                  value={lastName}
+                  onChange={setLastName}
+                />
+              </div>
+
+              <Input
+                type="email"
+                label="Work email address"
+                name="email"
+                value={email}
+                onChange={setEmail}
+              />
+
+              <Input
+                type="password"
+                label="Password"
+                name="password"
+                placeholder="Password (8 or more characters)"
+                value={password}
+                onChange={setPassword}
+              />
+
+              <SearchCombobox
+                label="Country"
+                name="country"
+                options={countries.all.map((c) => c.name)}
+                defaultOption={country}
+                onSelect={setCountry}
+              />
+
+              <div className="flex items-start gap-2">
+                <Checkbox checked={checked} onCheck={setChecked} />
+                <p className="text-left text-slate-600 text-sm">
+                  Yes, I understand and agree to the{" "}
+                  <Link href="#" className="text-blue-600 underline">
+                    TalentForge Terms of Service
+                  </Link>
+                  , including the{" "}
+                  <Link href="#" className="text-blue-600 underline">
+                    User Agreement
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="#" className="text-blue-600 underline">
+                    Privacy Policy ( CA Notice at Collection )
+                  </Link>{" "}
+                  .
+                </p>
+              </div>
+
+              <div className="flex items-center justify-center mt-4">
+                <Button
+                  type="primary"
+                  label="Create my account"
+                  classname="inline!"
+                  size="medium"
+                />
+              </div>
+            </form>
+          </div>
+        </>
+      )}
+    </AuthLayout>
+  );
+};
+
+const Option = ({
+  value,
+  onSelect,
+}: {
+  value: TUserType;
+  onSelect: (val: TUserType) => void;
+}) => {
+  return (
+    <button
+      className="p-4 border border-slate-200 rounded-xl shadow-md hover:shadow-2xl group transition-all duration-300 cursor-pointer"
+      onClick={() => onSelect(value)}
+    >
+      <div className="w-52 h-52 rounded-lg bg-blue-100 group-hover:bg-blue-200 flex items-center justify-center transition-all duration-300">
+        <Icon icon="mdi:user-outline" width={64} height={64} />
+      </div>
+
+      <div className="mt-4 flex flex-col gap-1 items-center justify-center">
+        <div className="flex items-center gap-2">
+          <h3 className="text-lg font-semibold">
+            {value === "client" ? "Client" : "Freelancer"}
+          </h3>
+
+          <Icon icon="mdi:arrow-right" width={18} />
+        </div>
+
+        <p className="text-sm text-slate-500">
+          {value === "client" ? "Post jobs and hire" : "Work and get paid"}
+        </p>
+      </div>
+    </button>
+  );
+};
+
+export default SignUp;
