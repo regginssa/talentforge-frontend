@@ -2,20 +2,33 @@ import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 
 interface CheckboxProps {
-  checked: boolean;
-  onCheck: (v: boolean) => void;
+  checked?: boolean;
+  onCheck?: (checked: boolean) => void;
+  error?: boolean;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, onCheck }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+  checked = false,
+  onCheck,
+  error,
+}) => {
   return (
     <motion.button
       type="button"
       role="checkbox"
       aria-checked={checked}
-      onClick={() => onCheck(!checked)}
+      onClick={() => onCheck?.(!checked)}
       whileTap={{ scale: 0.9 }}
-      className={`w-6 h-6 p-1 rounded-sm flex items-center justify-center border transition-colors duration-200
-        ${checked ? "border-blue-600 bg-blue-50" : "border-slate-400 hover:border-black"}
+      className={`
+        w-6 h-6 p-1 rounded-sm flex items-center justify-center 
+        transition-colors duration-200
+        ${
+          error
+            ? "border-red-500 bg-red-50 border-2"
+            : checked
+              ? "border border-blue-600 bg-blue-50"
+              : "border border-slate-400 hover:border-black"
+        }
       `}
     >
       <Icon

@@ -11,6 +11,7 @@ interface SearchComboboxProps {
   options: any[];
   defaultOption: any;
   classname?: string;
+  error?: string;
   onSelect: (v: any) => void;
 }
 
@@ -22,6 +23,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
   defaultOption,
   options,
   classname,
+  error,
   onSelect,
 }) => {
   const [search, setSearch] = useState("");
@@ -35,7 +37,6 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
     else setSearchedOptions(options.filter((opt) => opt.includes(search)));
   }, [search, options]);
 
-  // ✅ close on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -55,7 +56,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
       <motion.button
         type="button"
         whileTap={{ scale: 0.97 }}
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg border border-slate-400 hover:border-black transition-all duration-300 ${classname}`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-black"} transition-all duration-300 ${classname}`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {icon && <Icon icon={icon} width={14} />}
@@ -94,7 +95,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
                 type="text"
                 icon="mdi:search"
                 value={search}
-                onChange={setSearch}
+                onChange={(e: any) => setSearch(e.target.value)}
               />
             </div>
 
@@ -130,6 +131,17 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
           </motion.ul>
         )}
       </AnimatePresence>
+
+      {error && (
+        <div className="absolute w-full top-full mt-2 z-0 flex items-center gap-2">
+          <Icon
+            icon="mdi:information-outline"
+            width={20}
+            className="text-red-500"
+          />
+          <p className="text-red-600 text-sm">{error}</p>
+        </div>
+      )}
     </div>
   );
 };

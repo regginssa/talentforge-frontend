@@ -9,7 +9,8 @@ interface InputProps {
   classname?: string;
   icon?: string;
   value: any;
-  onChange: (v: any) => void;
+  error?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -20,6 +21,7 @@ const Input: React.FC<InputProps> = ({
   classname,
   icon,
   value,
+  error,
   onChange,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,16 +30,16 @@ const Input: React.FC<InputProps> = ({
     <div className={`flex flex-col items-start gap-1 ${classname}`}>
       {label && <label className="">{label}</label>}
       <div
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg border border-slate-400 hover:border-black focus-within:border-slate-600 transition-all duration-300`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-black focus-within:border-slate-600"} transition-all duration-300`}
       >
         {icon && <Icon icon={icon} width={20} />}
         <input
           type={type === "password" && showPassword ? "text" : type}
-          name={name}
+          id={name}
           placeholder={placeholder}
           className="bg-transparent border-none outline-none text-sm flex-1 placeholder:text-slate-600"
           value={value}
-          onChange={(e: any) => onChange(e.target.value)}
+          onChange={(e: any) => onChange(e)}
         />
 
         {type === "password" && (
@@ -49,6 +51,16 @@ const Input: React.FC<InputProps> = ({
           />
         )}
       </div>
+      {error && (
+        <div className="flex items-center gap-2">
+          <Icon
+            icon="mdi:information-outline"
+            width={20}
+            className="text-red-500"
+          />
+          <p className="text-red-600 text-sm">{error}</p>
+        </div>
+      )}
     </div>
   );
 };
