@@ -30,12 +30,12 @@ const Input: React.FC<InputProps> = ({
     <div className={`flex flex-col items-start gap-1 ${classname}`}>
       {label && <label className="">{label}</label>}
       <div
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-black focus-within:border-slate-600"} transition-all duration-300`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-2 hover:border-black focus-within:border-slate-600"} transition-all duration-200`}
       >
         {icon && <Icon icon={icon} width={20} />}
         <input
           type={type === "password" && showPassword ? "text" : type}
-          id={name}
+          name={name}
           placeholder={placeholder}
           className="bg-transparent border-none outline-none text-sm flex-1 placeholder:text-slate-600"
           value={value}
@@ -51,11 +51,11 @@ const Input: React.FC<InputProps> = ({
           />
         )}
       </div>
-      {error && (
+      {!!error && (
         <div className="flex items-center gap-2">
           <Icon
             icon="mdi:information-outline"
-            width={20}
+            width={16}
             className="text-red-500"
           />
           <p className="text-red-600 text-sm">{error}</p>

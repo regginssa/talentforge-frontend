@@ -18,12 +18,15 @@ const SignUp = () => {
     email: "",
     password: "",
     country: "",
+    alert: true,
     terms: false,
   });
   const [errors, setErrors] = useState<any>();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: false });
+  };
 
   const validate = () => {
     const newErrors: any = {};
@@ -53,7 +56,8 @@ const SignUp = () => {
     }
 
     if (!formData.terms) {
-      newErrors.terms = "You must accept the terms";
+      newErrors.terms =
+        "Please accept the TalentForge Terms of Service before continuing";
     }
 
     setErrors(newErrors);
@@ -93,7 +97,12 @@ const SignUp = () => {
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      userType={userType}
+      toggleUserType={() =>
+        setUserType((prev) => (prev === "client" ? "freelancer" : "client"))
+      }
+    >
       {currentStep === 0 ? (
         <>
           <div className="mb-8 text-center">
@@ -122,7 +131,7 @@ const SignUp = () => {
               className="mt-8 w-full max-w-lg mx-auto flex flex-col gap-6"
               onSubmit={handleSubmitForm}
             >
-              <div className="w-full flex items-center gap-4">
+              <div className="w-full flex items-start gap-4">
                 <Input
                   type="text"
                   label="First name"
@@ -174,14 +183,33 @@ const SignUp = () => {
                 }
               />
 
+              {userType === "freelancer" && (
+                <div>
+                  <div className="flex items-start gap-2">
+                    <Checkbox
+                      checked={formData?.alert}
+                      error={errors?.alert}
+                      onCheck={(v: boolean) =>
+                        setFormData({ ...formData, alert: v })
+                      }
+                    />
+                    <p className="text-left text-slate-600 text-sm">
+                      Send me helpful emails to find rewarding work and job
+                      leads.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <div>
                 <div className="flex items-start gap-2">
                   <Checkbox
                     checked={formData?.terms}
                     error={errors?.terms}
-                    onCheck={(v: boolean) =>
-                      setFormData({ ...formData, terms: v })
-                    }
+                    onCheck={(v: boolean) => {
+                      setFormData({ ...formData, terms: v });
+                      setErrors({ ...errors, terms: false });
+                    }}
                   />
                   <p className="text-left text-slate-600 text-sm">
                     Yes, I understand and agree to the{" "}
@@ -204,7 +232,7 @@ const SignUp = () => {
                   <div className="mt-1 flex items-center gap-2">
                     <Icon
                       icon="mdi:information-outline"
-                      width={20}
+                      width={16}
                       className="text-red-500"
                     />
                     <p className="text-red-600 text-sm">{errors.terms}</p>

@@ -56,7 +56,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
       <motion.button
         type="button"
         whileTap={{ scale: 0.97 }}
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-black"} transition-all duration-300 ${classname}`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-2 hover:border-black"} transition-all duration-300 ${classname}`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {icon && <Icon icon={icon} width={14} />}
@@ -132,11 +132,11 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
         )}
       </AnimatePresence>
 
-      {error && (
+      {!!error && (
         <div className="absolute w-full top-full mt-2 z-0 flex items-center gap-2">
           <Icon
             icon="mdi:information-outline"
-            width={20}
+            width={16}
             className="text-red-500"
           />
           <p className="text-red-600 text-sm">{error}</p>

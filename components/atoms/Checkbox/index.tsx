@@ -27,7 +27,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
             ? "border-red-500 bg-red-50 border-2"
             : checked
               ? "border border-blue-600 bg-blue-50"
-              : "border border-slate-400 hover:border-black"
+              : "border border-slate-400 hover:border-black hover:border-2"
         }
       `}
     >

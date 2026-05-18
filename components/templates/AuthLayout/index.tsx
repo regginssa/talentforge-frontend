@@ -1,22 +1,49 @@
 import Link from "next/link";
+import { motion } from "motion/react";
+
+type UserType = "client" | "freelancer";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
   isLogin?: boolean;
+  userType?: UserType;
+  toggleUserType?: () => void;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ children, isLogin }) => {
+const AuthLayout: React.FC<AuthLayoutProps> = ({
+  children,
+  isLogin,
+  userType,
+  toggleUserType,
+}) => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="h-20 w-full bg-white">
-        <div className="w-[80%] h-full mx-auto flex items-center">
+        <div className="w-[80%] h-full mx-auto flex items-center justify-between">
           <h1 className="text-2xl font-bold">TalentForge</h1>
+
+          {userType && toggleUserType && (
+            <div className="flex items-center gap-4">
+              <span className="">
+                {userType === "client"
+                  ? "Looking for work?"
+                  : "Here to hire talent?"}
+              </span>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="text-blue-600 hover:underline transition-all duration-200 cursor-pointer"
+                onClick={toggleUserType}
+              >
+                {userType === "client" ? "Apply as talent" : "Join as a Client"}
+              </motion.button>
+            </div>
+          )}
         </div>
       </header>
 
       {/* Main */}
-      <main className="flex-1 flex flex-col items-center justify-center overflow-scroll">
+      <main className="flex-1 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto">
         {children}
       </main>
 
