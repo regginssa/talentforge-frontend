@@ -180,7 +180,7 @@ const CatLayout: React.FC<CatLayoutProps> = ({
                 <div className="w-full mt-8">
                   <button
                     className="bg-blue-600 hover:bg-blue-500 w-[60%] py-3 rounded-lg text-lg text-white font-semibold transition-all duration-150 ease-in-out cursor-pointer"
-                    aria-label="Get started with TalentForges"
+                    aria-label="Get started with WorkLancs"
                   >
                     Get started
                   </button>
@@ -189,7 +189,7 @@ const CatLayout: React.FC<CatLayoutProps> = ({
               <div className="w-1/2">
                 <Image
                   src={intro.image}
-                  alt={`${intro.title} - TalentForge freelance services`}
+                  alt={`${intro.title} - WorkLanc freelance services`}
                   className="w-full h-auto object-cover"
                   priority
                 />
@@ -378,10 +378,10 @@ const CatLayout: React.FC<CatLayoutProps> = ({
                 {param === "dev-it"
                   ? "IT Experts"
                   : param === "sales-and-marketing"
-                  ? "Sales & Marketing"
-                  : param === "admin-customer-support"
-                  ? "Administrators"
-                  : "Creatives"}{" "}
+                    ? "Sales & Marketing"
+                    : param === "admin-customer-support"
+                      ? "Administrators"
+                      : "Creatives"}{" "}
                 work now
               </h2>
               <p className="text-white mt-4">

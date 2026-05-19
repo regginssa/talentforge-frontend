@@ -9,7 +9,7 @@ type TCard = {
 const WhatNew = () => {
   const cards: TCard[] = [
     {
-      title: "TalentForge Updates",
+      title: "WorkLanc Updates",
       description: "Checkout our latest products, partners, and enhancements.",
       path: "#",
     },

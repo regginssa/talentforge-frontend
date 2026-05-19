@@ -2,11 +2,11 @@ import { TServiceCatLayoutProject } from "@/components/templates/ServicesCatLayo
 import { TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_DEVELOPMENT_IT_SEO: TSEO = {
-  title: "Development & IT Services | TalentForge - Freelancer",
+  title: "Development & IT Services | WorkLanc - Freelancer",
   description:
     "Discover expert freelance solutions in web and mobile app development, blockchain, AI, WordPress, cybersecurity, data analysis, QA testing, and IT support. Hire top talent to power your digital growth.",
   keywords:
-    "web development, mobile apps, blockchain, cryptocurrency, NFT, WordPress, ecommerce, AI, machine learning, data analysis, QA testing, cybersecurity, IT support, TalentForge",
+    "web development, mobile apps, blockchain, cryptocurrency, NFT, WordPress, ecommerce, AI, machine learning, data analysis, QA testing, cybersecurity, IT support, WorkLanc",
   url: "/services/development-it",
 };
 

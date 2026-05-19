@@ -13,9 +13,9 @@ const AIExpertHiringBenefitsFaq = () => {
       {/* Part 2 */}
       <div className="w-full mt-14">
         <p>
-          TalentForge - Freelancer is the leading online talent solution
-          for companies looking to scale their teams and get work done. Here are
-          some key advantages for businesses looking to find talent on TalentForge.
+          WorkLanc - Freelancer is the leading online talent solution for
+          companies looking to scale their teams and get work done. Here are
+          some key advantages for businesses looking to find talent on WorkLanc.
         </p>
         <ul className="list-disc p-4 px-12">
           <li>

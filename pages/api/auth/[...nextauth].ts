@@ -15,26 +15,35 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, account, profile }: any) {
-      // first login only
-      if (account && profile) {
-        token.googleId = profile.sub;
+      if (account) {
+        token.provider = account.provider; // google or apple
+      }
+
+      if (profile) {
+        token.email = profile.email;
         token.firstName = profile.given_name;
         token.lastName = profile.family_name;
         token.picture = profile.picture;
-        token.emailVerified = profile.email_verified;
-        token.locale = profile.locale;
+
+        // Google specific
+        token.googleId = profile.sub;
+
+        // Apple may differ (handled later)
       }
 
       return token;
     },
 
     async session({ session, token }: any) {
-      session.user.googleId = token.googleId;
+      session.user.email = token.email;
       session.user.firstName = token.firstName;
       session.user.lastName = token.lastName;
       session.user.picture = token.picture;
-      session.user.emailVerified = token.emailVerified;
-      session.user.locale = token.locale;
+
+      session.user.googleId = token.googleId;
+      session.user.appleId = token.appleId;
+
+      session.provider = token.provider;
 
       return session;
     },

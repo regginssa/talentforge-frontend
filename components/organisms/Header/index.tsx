@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ navItems }) => {
       <div className="w-[80%] mx-auto flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-10">
           {/* Logo */}
-          <h1 className="text-2xl font-bold">TalentForge</h1>
+          <h1 className="text-2xl font-bold">WorkLanc</h1>
           {/* Navbar */}
           <Navbar navItems={navItems} />
         </div>

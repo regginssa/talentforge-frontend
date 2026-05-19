@@ -4,22 +4,22 @@ const FinanceAccountingConnectionMethodsFaq = () => {
       <ul className="list-disc py-4 px-12">
         <li>
           Talent Marketplace: Find and source independent professionals for your
-          finance and accounting project directly from TalentForge -
-          Freelancer’s talent marketplace.
+          finance and accounting project directly from WorkLanc - Freelancer’s
+          talent marketplace.
         </li>
         <li>
           Project Catalog: Project Catalog is a new way to quickly get started
-          and expand your capabilities through TalentForge - Freelancer.
-          From bookkeeping to financial consulting services, projects are
-          predefined for you, so you can get to know talent through a clearly
-          defined project within their expertise, then easily scale up and down
-          as needed.
+          and expand your capabilities through WorkLanc - Freelancer. From
+          bookkeeping to financial consulting services, projects are predefined
+          for you, so you can get to know talent through a clearly defined
+          project within their expertise, then easily scale up and down as
+          needed.
         </li>
         <li>
-          Specialized Teams: TalentForge - Freelancer isn’t just for
-          independent contractors; you can also find independent agencies that
-          can help you fill your finance and accounting talent gaps with their
-          own professional teams.
+          Specialized Teams: WorkLanc - Freelancer isn’t just for independent
+          contractors; you can also find independent agencies that can help you
+          fill your finance and accounting talent gaps with their own
+          professional teams.
         </li>
       </ul>
     </div>

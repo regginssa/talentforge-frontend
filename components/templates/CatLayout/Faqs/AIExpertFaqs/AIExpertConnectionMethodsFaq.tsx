@@ -4,8 +4,7 @@ const AdminCustomerSupportConnectionMethodsFaq = () => {
       <ul className="list-disc py-4 px-12">
         <li>
           Post a job: Find and source independent professionals for your AI
-          projects directly from TalentForge - Freelancer’s Talent
-          Marketplace™.
+          projects directly from WorkLanc - Freelancer’s Talent Marketplace™.
         </li>
         <li>
           Book a consultation: Not quite sure where to start or have questions?
@@ -18,10 +17,9 @@ const AdminCustomerSupportConnectionMethodsFaq = () => {
           less time working out the details and more time getting to work.
         </li>
         <li>
-          Hire an agency: TalentForge - Freelancer isn’t just for
-          independent contractors; you can also find independent agencies that
-          can help you fill your AI talent gaps with their own professional
-          teams
+          Hire an agency: WorkLanc - Freelancer isn’t just for independent
+          contractors; you can also find independent agencies that can help you
+          fill your AI talent gaps with their own professional teams
         </li>
       </ul>
     </div>

@@ -28,7 +28,7 @@ type TSkillCategory = {
   path: string;
 };
 
-export default function Home () {
+export default function Home() {
   const [activeSwitchIndex, setActiveSwitchIndex] = useState<number>(0);
   const [activeSkillCategoryIndex, setActiveSkillCategoryIndex] =
     useState<number>(0);
@@ -79,7 +79,7 @@ export default function Home () {
     {
       title: "Work with the best—without breaking the bank",
       description:
-        "TalentForge makes it affordable to up your work and take advantage of low transaction rates.",
+        "WorkLanc makes it affordable to up your work and take advantage of low transaction rates.",
       icon: "solar:shield-star-outline",
     },
   ];
@@ -241,27 +241,26 @@ export default function Home () {
       {/* Enhanced SEO */}
       <Head>
         <title>
-          TalentForge — Find Top Freelancers & Remote Jobs |
-          Powered by AI
+          WorkLanc — Find Top Freelancers & Remote Jobs | Powered by AI
         </title>
         <meta
           name="description"
-          content="Join TalentForge to connect with skilled AI-powered freelancers or discover high-quality remote job opportunities. From web development to AI services, design, marketing, and more. Start your project today."
+          content="Join WorkLanc to connect with skilled AI-powered freelancers or discover high-quality remote job opportunities. From web development to AI services, design, marketing, and more. Start your project today."
         />
         <meta
           name="keywords"
-          content="freelancers, freelance jobs, remote work, AI freelancers, web developers, designers, digital marketing, TalentForge, hire freelancers, freelance marketplace, independent contractors, project-based work"
+          content="freelancers, freelance jobs, remote work, AI freelancers, web developers, designers, digital marketing, WorkLanc, hire freelancers, freelance marketplace, independent contractors, project-based work"
         />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="TalentForge" />
+        <meta name="author" content="WorkLanc" />
         <link rel="canonical" href="https://charlieunicornai-freelancer.com/" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="TalentForge" />
+        <meta property="og:site_name" content="WorkLanc" />
         <meta
           property="og:title"
-          content="TalentForge — Find Top Freelancers & Remote Jobs"
+          content="WorkLanc — Find Top Freelancers & Remote Jobs"
         />
         <meta
           property="og:description"
@@ -282,7 +281,7 @@ export default function Home () {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="TalentForge — Find Top Freelancers & Remote Jobs"
+          content="WorkLanc — Find Top Freelancers & Remote Jobs"
         />
         <meta
           name="twitter:description"
@@ -304,7 +303,7 @@ export default function Home () {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "TalentForge",
+            name: "WorkLanc",
             description:
               "AI-powered freelance marketplace connecting businesses with top freelancers",
             url: "https://charlieunicornai-freelancer.com/",
@@ -330,7 +329,7 @@ export default function Home () {
         >
           <Image
             src={SearchSectionBgImage}
-            alt="TalentForge - Connect clients with top freelancers"
+            alt="WorkLanc - Connect clients with top freelancers"
             className="absolute w-full h-full object-cover rounded-lg"
             priority
           />
@@ -467,8 +466,8 @@ export default function Home () {
               ) : (
                 <div className="w-full flex flex-col items-center justify-center mt-6">
                   <p className="text-lg font-semibold text-white text-center mb-4">
-                    Build your freelancing career on TalentForge, with
-                    thousands of jobs posted every week.
+                    Build your freelancing career on WorkLanc, with thousands of
+                    jobs posted every week.
                   </p>
                   <Button
                     type="primary"
@@ -603,8 +602,8 @@ export default function Home () {
 
             {/* Enterprise Description */}
             <p className="text-white font-semibold text-lg mt-6">
-              Access the top 1% of talent on TalentForge, and a full
-              suite of hybrid
+              Access the top 1% of talent on WorkLanc, and a full suite of
+              hybrid
               <br />
               workforce management tools. This is how innovation works now.
             </p>
@@ -642,7 +641,7 @@ export default function Home () {
                   aria-hidden="true"
                 />
                 <p className="text-white">
-                  Partner with TalentForge for end-to-end support
+                  Partner with WorkLanc for end-to-end support
                 </p>
               </div>
             </div>
@@ -673,7 +672,7 @@ export default function Home () {
         >
           <Image
             src={ForClientsImage}
-            alt="For Clients - Find talent your way on TalentForge"
+            alt="For Clients - Find talent your way on WorkLanc"
             className="absolute top-0 left-0 w-full h-full object-cover object-top rounded-lg"
           />
 
@@ -779,7 +778,7 @@ export default function Home () {
               <h2 id="why-choose-title" className="text-6xl font-semibold">
                 Why businesses
                 <br />
-                turn to TalentForge
+                turn to WorkLanc
               </h2>
             </header>
 
@@ -858,7 +857,7 @@ export default function Home () {
         >
           <Image
             src={FindWorkImage}
-            alt="For Talent - Find great work opportunities on TalentForge"
+            alt="For Talent - Find great work opportunities on WorkLanc"
             className="w-1/2 h-auto object-cover"
           />
           <div className="w-1/2 p-8">
@@ -977,4 +976,4 @@ export default function Home () {
       </main>
     </IntroLayout>
   );
-};
+}

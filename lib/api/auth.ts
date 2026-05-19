@@ -1,8 +1,7 @@
-import { User } from "@/types/user";
 import { request } from "./client";
 
 const AuthAPI = {
-  signup: async (body: User) =>
+  signup: async (body: any) =>
     await request("/auth/signup", {
       method: "POST",
       body: JSON.stringify(body),
@@ -10,6 +9,12 @@ const AuthAPI = {
 
   signin: async (body: any) =>
     await request("/auth/signin", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  oauth: async (body: any) =>
+    await request("/auth/oauth", {
       method: "POST",
       body: JSON.stringify(body),
     }),

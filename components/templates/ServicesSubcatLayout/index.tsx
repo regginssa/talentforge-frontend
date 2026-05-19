@@ -348,7 +348,7 @@ const ServicesSubcatLayout: React.FC<ServicesSubcatLayoutProps> = ({
                       <CheckboxGroup
                         options={nftArtStyleOptions.slice(
                           4,
-                          nftArtStyleOptions.length
+                          nftArtStyleOptions.length,
                         )}
                         defaultValues={["3d_art"]}
                         onChange={(values) => {
@@ -378,7 +378,7 @@ const ServicesSubcatLayout: React.FC<ServicesSubcatLayoutProps> = ({
                       <CheckboxGroup
                         options={nftMarketplaceOptions.slice(
                           4,
-                          nftArtStyleOptions.length
+                          nftArtStyleOptions.length,
                         )}
                         defaultValues={["3d_art"]}
                         onChange={(values) => {
@@ -518,7 +518,7 @@ const ServicesSubcatLayout: React.FC<ServicesSubcatLayoutProps> = ({
           {/* Badge & Title */}
           <div className="flex items-center gap-2">
             <span className="py-1 px-4 rounded-full border border-green-600 text-xs text-green-600">
-              TalentForge Picks
+              WorkLanc Picks
             </span>
             <p className="text-sm">Top projects you may like</p>
           </div>

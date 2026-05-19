@@ -21,7 +21,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({
       {/* Header */}
       <header className="h-20 w-full bg-white">
         <div className="w-[80%] h-full mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">TalentForge</h1>
+          <h1 className="text-2xl font-bold">WorkLanc</h1>
 
           {userType && toggleUserType && (
             <div className="flex items-center gap-4">

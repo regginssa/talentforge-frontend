@@ -11,7 +11,7 @@ interface SEOProps {
 
 const defaultImage = "https://charlieunicorn.ai/og-default.png";
 const defaultKeywords =
-  "AI talent marketplace, hire AI developers, Web3 experts, post job AI, post job Web3, TalentForge";
+  "AI talent marketplace, hire AI developers, Web3 experts, post job AI, post job Web3, WorkLanc";
 
 const SEO: FC<SEOProps> = ({
   title,

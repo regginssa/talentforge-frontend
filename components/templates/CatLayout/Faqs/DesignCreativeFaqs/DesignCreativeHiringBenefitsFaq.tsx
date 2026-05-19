@@ -13,10 +13,10 @@ const DesignCreativeHiringBenefitsFaq = () => {
       {/* Part 2 */}
       <div className="w-full mt-14">
         <p>
-          TalentForge - Freelancer is the leading online talent solution
-          for companies looking to scale their teams and get work done. Key
+          WorkLanc - Freelancer is the leading online talent solution for
+          companies looking to scale their teams and get work done. Key
           advantages for businesses looking to source talent for their design
-          and creative projects through TalentForge - Freelancer include:
+          and creative projects through WorkLanc - Freelancer include:
         </p>
         <ul className="list-disc p-4 px-12">
           <li>

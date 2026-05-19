@@ -65,19 +65,18 @@ const AIServices = () => {
       title:
         "What is the first step to hiring AI talent and determining the project cost?",
       description:
-        "One of the first steps in hiring any talent is to determine what skills you need for your project. For example, if you're integrating AI into your applications, you may need engineers or data scientists. Or, if you're interested in using generative AI technologies to create content, you'll want to explore working with an AI content editor to check AI outputs. Examples of talent you'll find on TalentForge - Freelancer include:",
+        "One of the first steps in hiring any talent is to determine what skills you need for your project. For example, if you're integrating AI into your applications, you may need engineers or data scientists. Or, if you're interested in using generative AI technologies to create content, you'll want to explore working with an AI content editor to check AI outputs. Examples of talent you'll find on WorkLanc - Freelancer include:",
       children: <HiringAIExpertCostIntroFaq />,
     },
     {
-      title:
-        "How can I connect with AI talent on TalentForge - Freelancer?",
+      title: "How can I connect with AI talent on WorkLanc - Freelancer?",
       description:
-        "TalentForge - Freelancer gives you the flexibility you need to find the right talent for your AI projects. Here's how you can find an expert with the skills you need:",
+        "WorkLanc - Freelancer gives you the flexibility you need to find the right talent for your AI projects. Here's how you can find an expert with the skills you need:",
       children: <AIExpertConnectionMethodsFaq />,
     },
     {
       title:
-        "Why should I use TalentForge - Freelancer to hire talent for AI services?",
+        "Why should I use WorkLanc - Freelancer to hire talent for AI services?",
       description:
         "When it comes to AI, you may need a multidisciplinary team to handle your project. You might need professionals like:",
       children: <AIExpertHiringBenefitsFaq />,
@@ -86,12 +85,12 @@ const AIServices = () => {
 
   const seo: TSEO = {
     title: `Top AI Services & Experts for Hire in ${getMonthName(
-      now.getMonth()
-    )} ${now.getFullYear()} | TalentForge - Freelancer`,
+      now.getMonth(),
+    )} ${now.getFullYear()} | WorkLanc - Freelancer`,
     description:
-      "Hire top-rated AI experts, developers, and creators on TalentForge. From machine learning and chatbot development to generative AI, prompt engineering, and data science—discover professionals who bring artificial intelligence solutions to life. Start your AI project today.",
+      "Hire top-rated AI experts, developers, and creators on WorkLanc. From machine learning and chatbot development to generative AI, prompt engineering, and data science—discover professionals who bring artificial intelligence solutions to life. Start your AI project today.",
     keywords:
-      "AI freelancers, AI developers, machine learning engineers, ChatGPT specialists, GPT-4 developers, DALL·E artists, Stable Diffusion experts, prompt engineers, OpenAI Codex, generative AI, AI chatbot developers, AI content creators, data scientists, AI engineers, AI services, hire AI experts, TalentForge",
+      "AI freelancers, AI developers, machine learning engineers, ChatGPT specialists, GPT-4 developers, DALL·E artists, Stable Diffusion experts, prompt engineers, OpenAI Codex, generative AI, AI chatbot developers, AI content creators, data scientists, AI engineers, AI services, hire AI experts, WorkLanc",
     url: "/cat/ai",
   };
 
@@ -132,8 +131,8 @@ const AIServices = () => {
                 WORK, SMARTER.
               </h1>
               <p className="text-base text-white">
-                Partner with independent talent on TalentForge -
-                Freelancer to help AI work for your business.
+                Partner with independent talent on WorkLanc - Freelancer to help
+                AI work for your business.
               </p>
               <div className="w-2/3">
                 <Button
@@ -296,8 +295,8 @@ const AIServices = () => {
             </h2>
             <p className="mt-4">
               Find a pro with the skills and experience you need. Sign up to
-              invite them to a job, then start a contract on TalentForge
-              - Freelancer when you've figured out the details.{" "}
+              invite them to a job, then start a contract on WorkLanc -
+              Freelancer when you've figured out the details.{" "}
               <Link href="#" className="text-blue-600 underline">
                 See all talent
               </Link>
@@ -371,7 +370,7 @@ const AIServices = () => {
                 250+ skills
               </span>
               <p className="mt-2 text-[#0e183d]">
-                Represented by talent on TalentForge - Freelancer
+                Represented by talent on WorkLanc - Freelancer
               </p>
             </div>
           </div>
@@ -450,7 +449,7 @@ const AIServices = () => {
             >
               How to hire an AI professional on
               <br />
-              TalentForge - Freelancer
+              WorkLanc - Freelancer
             </h2>
           </header>
 

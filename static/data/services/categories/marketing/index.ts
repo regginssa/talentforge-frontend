@@ -2,11 +2,11 @@ import { TServiceCatLayoutProject } from "@/components/templates/ServicesCatLayo
 import { TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_MARKETING_SEO: TSEO = {
-  title: "Online Digital Marketing Services | TalentForge - Freelancer",
+  title: "Online Digital Marketing Services | WorkLanc - Freelancer",
   description:
     "Find expert freelance marketing services including SEO, social media management, email marketing, influencer campaigns, PR, market research, and more. Grow your brand with tailored digital strategies.",
   keywords:
-    "digital marketing, SEO, social media marketing, influencer marketing, email marketing, podcast marketing, video marketing, marketing strategy, web analytics, PR, market research, TalentForge",
+    "digital marketing, SEO, social media marketing, influencer marketing, email marketing, podcast marketing, video marketing, marketing strategy, web analytics, PR, market research, WorkLanc",
   url: "/services/marketing",
 };
 

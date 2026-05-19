@@ -157,7 +157,7 @@ const Footer = () => {
         {/* Information */}
         <div className="w-full flex flex-row items-center gap-14 mt-4">
           <h1 className="text-[#a5a5a5] text-sm">
-            © 2024 - {new Date().getFullYear()} TalentForge.
+            © 2024 - {new Date().getFullYear()} WorkLanc.
           </h1>
 
           {/* Navs Group */}

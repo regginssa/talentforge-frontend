@@ -2,11 +2,11 @@ import { TServiceCatLayoutProject } from "@/components/templates/ServicesCatLayo
 import { TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_WRITING_TRANSLATION_SEO: TSEO = {
-  title: "Writing & Translation Services | TalentForge - Freelancer",
+  title: "Writing & Translation Services | WorkLanc - Freelancer",
   description:
     "Discover top freelance writing and translation talent for content creation, copywriting, localization, editing, and business writing. Enhance your voice with expertly crafted words tailored to your audience.",
   keywords:
-    "content writing, copywriting, translation, localization, editing, proofreading, creative writing, resume writing, business writing, blog writing, product descriptions, LinkedIn profiles, beta reading, TalentForge",
+    "content writing, copywriting, translation, localization, editing, proofreading, creative writing, resume writing, business writing, blog writing, product descriptions, LinkedIn profiles, beta reading, WorkLanc",
   url: "/services/writing-translation",
 };
 

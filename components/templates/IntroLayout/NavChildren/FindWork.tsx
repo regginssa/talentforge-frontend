@@ -10,8 +10,7 @@ const FindWork = () => {
   const cards: TCard[] = [
     {
       title: "Ways to earn",
-      description:
-        "Learn why TalentForge has the right opportunities for you.",
+      description: "Learn why WorkLanc has the right opportunities for you.",
       path: "#",
     },
     {
