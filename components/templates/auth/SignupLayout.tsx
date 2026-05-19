@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 
-type UserType = "client" | "freelancer";
+type UserType = "client" | "talent";
 
 interface SignupLayoutProps {
   children: React.ReactNode;

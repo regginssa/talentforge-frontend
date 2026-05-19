@@ -6,8 +6,9 @@ import Link from "next/link";
 import GEO from "@/lib/api/geo";
 import { SocialAuthButtonGroup } from "@/components/molecules";
 import SignupLayout from "@/components/templates/auth/SignupLayout";
+import AuthAPI from "@/lib/api/auth";
 
-type TUserType = "client" | "freelancer";
+type TUserType = "client" | "talent";
 
 const SignUp = () => {
   const [userType, setUserType] = useState<TUserType>("client");
@@ -84,14 +85,23 @@ const SignUp = () => {
     setUserType(val);
   };
 
-  const handleSubmitForm = (e: React.FormEvent) => {
+  const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const isValid = validate();
 
     if (!isValid) return;
 
-    console.log("FORM SUBMIT SUCCESS:", formData);
+    const user = await AuthAPI.signup({
+      ...formData,
+      accountType: userType,
+      countryCode:
+        countries.all.find((c) => c.name === formData.country)?.alpha2 || "US",
+      createdAt: new Date(),
+      appleId: null,
+      googleId: null,
+      signinOption: "email",
+    } as any);
 
     // 👉 call API here
   };
@@ -100,7 +110,7 @@ const SignUp = () => {
     <SignupLayout
       userType={userType}
       toggleUserType={() =>
-        setUserType((prev) => (prev === "client" ? "freelancer" : "client"))
+        setUserType((prev) => (prev === "client" ? "talent" : "client"))
       }
     >
       {currentStep === 0 ? (
@@ -111,7 +121,7 @@ const SignUp = () => {
           </div>
           <div className="flex items-center gap-10">
             <Option value="client" onSelect={handleOptionSelect} />
-            <Option value="freelancer" onSelect={handleOptionSelect} />
+            <Option value="talent" onSelect={handleOptionSelect} />
           </div>
         </>
       ) : (
@@ -183,7 +193,7 @@ const SignUp = () => {
                 }
               />
 
-              {userType === "freelancer" && (
+              {userType === "talent" && (
                 <div>
                   <div className="flex items-start gap-2">
                     <Checkbox

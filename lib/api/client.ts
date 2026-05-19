@@ -2,8 +2,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function request<T>(
   endpoint: string,
-  options: RequestInit = {}
-): Promise<T> {
+  options: RequestInit = {},
+): Promise<T | null> {
   const res = await fetch(`${BASE_URL}/api${endpoint}`, {
     headers: {
       "Content-Type": "application/json",
@@ -12,10 +12,12 @@ export async function request<T>(
     ...options,
   });
 
+  const data = await res.json().catch(() => null);
+
   if (!res.ok) {
-    const error = await res.json().catch(() => ({}));
-    throw new Error(error.message || "API Error");
+    // throw new Error(data?.message || data?.msg || "API Error");
+    return null;
   }
 
-  return res.json();
+  return data;
 }
