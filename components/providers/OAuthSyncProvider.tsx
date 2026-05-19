@@ -1,12 +1,14 @@
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-export function AuthSyncProvider({ children }: { children: React.ReactNode }) {
+export function OAuthSyncProvider({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
 
   useEffect(() => {
     const syncUser = async () => {
       if (status !== "authenticated") return;
+
+      console.log("oauth session: ", session);
 
       //   await request("/auth/google", {
       //     method: "POST",

@@ -5,7 +5,7 @@ import { countries } from "country-data-list";
 import Link from "next/link";
 import GEO from "@/lib/api/geo";
 import { SocialAuthButtonGroup } from "@/components/molecules";
-import SignupLayout from "@/components/templates/auth/SignupLayout";
+import SignupLayout from "@/components/layouts/auth/SignupLayout";
 import AuthAPI, { setAuthToken } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
@@ -121,6 +121,7 @@ const SignUp = () => {
       toggleUserType={() =>
         setUserType((prev) => (prev === "client" ? "talent" : "client"))
       }
+      hiddenToggle={currentStep === 0}
     >
       {currentStep === 0 ? (
         <>

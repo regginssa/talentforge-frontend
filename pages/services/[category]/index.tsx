@@ -1,5 +1,5 @@
-import { ServicesCatLayout } from "@/components/templates";
-import { TServiceCatLayoutProject } from "@/components/templates/ServicesCatLayout";
+import { ServicesCatLayout } from "@/components/layouts";
+import { TServiceCatLayoutProject } from "@/components/layouts/ServicesCatLayout";
 import {
   SERVICES_DESIGN_PROJECTS,
   SERVICES_DESIGN_SEO,

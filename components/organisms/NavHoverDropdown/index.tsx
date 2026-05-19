@@ -1,4 +1,4 @@
-import { TNavItem } from "@/components/templates/NavLayout";
+import { TNavItem } from "@/components/layouts/NavLayout";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -110,7 +110,7 @@ const NavHoverDropdown: React.FC<NavHoverDropdownProps> = ({
                             ))}
                           </ul>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
-import { TNavItem } from "@/components/templates/NavLayout";
+import { TNavItem } from "@/components/layouts/NavLayout";
 
 interface ServiceCardProps {
   title: TNavItem;

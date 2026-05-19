@@ -1,4 +1,4 @@
-import { ServicesLayout } from "@/components/templates";
+import { ServicesLayout } from "@/components/layouts";
 import IntroImage from "@/public/assets/webps/services/project_catalog_intro.webp";
 import Image from "next/image";
 import { Icon } from "@iconify/react";

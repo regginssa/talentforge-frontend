@@ -8,6 +8,7 @@ interface SignupLayoutProps {
   isLogin?: boolean;
   userType?: UserType;
   toggleUserType?: () => void;
+  hiddenToggle?: boolean;
 }
 
 const SignupLayout: React.FC<SignupLayoutProps> = ({
@@ -15,6 +16,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({
   isLogin,
   userType,
   toggleUserType,
+  hiddenToggle,
 }) => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -23,7 +25,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({
         <div className="w-[80%] h-full mx-auto flex items-center justify-between">
           <h1 className="text-2xl font-bold">WorkLanc</h1>
 
-          {userType && toggleUserType && (
+          {!hiddenToggle && userType && toggleUserType && (
             <div className="flex items-center gap-4">
               <span className="">
                 {userType === "client"

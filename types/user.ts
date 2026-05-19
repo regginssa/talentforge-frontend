@@ -11,5 +11,7 @@ export interface User {
   signinOption: SigninOption;
   googleId: string | null;
   appleId: string | null;
+  emailVerified: boolean;
+  phoneVerified: boolean;
   createdAt: Date;
 }

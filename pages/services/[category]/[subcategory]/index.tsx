@@ -1,5 +1,5 @@
-import { ServicesSubcatLayout } from "@/components/templates";
-import { TNavItem } from "@/components/templates/NavLayout";
+import { ServicesSubcatLayout } from "@/components/layouts";
+import { TNavItem } from "@/components/layouts/NavLayout";
 import { SERVICES_NAV_ITEMS } from "@/static/data/nav/services";
 import { SERVICES_DESIGN_SUBCATEGORIES_DATA } from "@/static/data/services/categories/design";
 import { removeDashes } from "@/utils/data";
@@ -12,7 +12,7 @@ const ServicesSubcategory = () => {
 
   const getBreadcrumbsNavs = (): TNavItem[] => {
     const match = SERVICES_NAV_ITEMS.find((nav) =>
-      nav.path.includes(category as string)
+      nav.path.includes(category as string),
     );
 
     return match ? [{ label: match.label, path: match.path }] : [];
@@ -23,7 +23,7 @@ const ServicesSubcategory = () => {
       const removedDashesSubcategory = removeDashes(subcategory as string);
 
       const found = SERVICES_DESIGN_SUBCATEGORIES_DATA.find((item) =>
-        Object.keys(item).includes(removedDashesSubcategory)
+        Object.keys(item).includes(removedDashesSubcategory),
       );
 
       if (found) {

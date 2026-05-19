@@ -1,4 +1,4 @@
-import { IntroLayout } from "@/components/templates";
+import { IntroLayout } from "@/components/layouts";
 import Image from "next/image";
 import SearchSectionBgImage from "@/public/assets/jpgs/intro/intro_section1.jpg";
 import { Button, Switch } from "@/components/atoms";

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 import { Button } from "@/components/atoms";
 
 type TNavItem = {

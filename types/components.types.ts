@@ -1,4 +1,4 @@
-import { TNavItem } from "@/components/templates/NavLayout";
+import { TNavItem } from "@/components/layouts/NavLayout";
 
 export interface INavItem {
   label: string;

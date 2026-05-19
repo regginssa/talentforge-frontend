@@ -9,8 +9,8 @@ import {
   LinkDropdown,
   SEO,
 } from "@/components/atoms";
-import { IntroLayout, NavLayout } from "@/components/templates";
-import { dropdowns, navs } from "@/components/templates/CatLayout";
+import { IntroLayout, NavLayout } from "@/components/layouts";
+import { dropdowns, navs } from "@/components/layouts/CatLayout";
 import {
   AI_EXPERTS,
   AI_EXPERTS_CARDS,
@@ -24,7 +24,7 @@ import {
   AIExpertConnectionMethodsFaq,
   AIExpertHiringBenefitsFaq,
   HiringAIExpertCostIntroFaq,
-} from "@/components/templates/CatLayout/Faqs/AIExpertFaqs";
+} from "@/components/layouts/cat/faqs/AIExpertFaqs";
 import { getMonthName } from "@/utils/date";
 
 export type TAIExpertCardItem = {

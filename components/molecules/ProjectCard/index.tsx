@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TFreelancerBadge } from "@/types/components.types";
 import { Badge, SAvatar } from "@/components/atoms";
 import Link from "next/link";
-import { TNavItem } from "@/components/templates/NavLayout";
+import { TNavItem } from "@/components/layouts/NavLayout";
 import Image from "next/image";
 import { formatNumber } from "@/utils/math";
 

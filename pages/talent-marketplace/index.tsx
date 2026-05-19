@@ -1,5 +1,5 @@
 import { Button, LinkDropdown, SEO } from "@/components/atoms";
-import { IntroLayout, NavLayout } from "@/components/templates";
+import { IntroLayout, NavLayout } from "@/components/layouts";
 import { TLinkDropdownItem } from "@/types/components.types";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";

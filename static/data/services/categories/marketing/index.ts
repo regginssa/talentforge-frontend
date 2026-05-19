@@ -1,4 +1,4 @@
-import { TServiceCatLayoutProject } from "@/components/templates/ServicesCatLayout";
+import { TServiceCatLayoutProject } from "@/components/layouts/ServicesCatLayout";
 import { TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_MARKETING_SEO: TSEO = {

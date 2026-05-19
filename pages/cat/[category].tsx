@@ -1,4 +1,4 @@
-import { CatLayout } from "@/components/templates";
+import { CatLayout } from "@/components/layouts";
 import { useRouter } from "next/router";
 import type {
   TCatLayoutExpert,
@@ -7,7 +7,7 @@ import type {
   TCatLayoutProfessionals,
   TCatLayoutProjectOverview,
   TCatLayoutService,
-} from "@/components/templates/CatLayout";
+} from "@/components/layouts/CatLayout";
 
 // Intro Images
 import DevIntroImage from "@/public/assets/webps/cat/dev-it/intro.webp";
@@ -49,12 +49,12 @@ import {
   DevConnectionMethodsFaq,
   DevHiringBenefitsFaq,
   HiringDevCostIntroFaq,
-} from "@/components/templates/CatLayout/Faqs/DeveloperFaqs";
+} from "@/components/layouts/cat/faqs/DeveloperFaqs";
 import {
   DesignCreativeConnectionMethodsFaq,
   DesignCreativeHiringBenefitsFaq,
   HiringDesignCostIntroFaq,
-} from "@/components/templates/CatLayout/Faqs/DesignCreativeFaqs";
+} from "@/components/layouts/cat/faqs/DesignCreativeFaqs";
 import { getMonthName } from "@/utils/date";
 import {
   CAT_SALES_AND_MARKETING_EXPERTS_CATEGORIES,
@@ -66,7 +66,7 @@ import {
   HiringSalesMarketingCostIntroFaq,
   SalesMarketingConnectionMethodsFaq,
   SalesMarketingHiringBenefitsFaq,
-} from "@/components/templates/CatLayout/Faqs/SalesMarketingFaqs";
+} from "@/components/layouts/cat/faqs/SalesMarketingFaqs";
 import {
   CAT_ADMIN_CUSTOMER_SUPPORT_EXPERTS_CATEGORIES,
   CAT_ADMIN_CUSTOMER_SUPPORT_FREELANCER_CATEGORIES,
@@ -78,7 +78,7 @@ import {
   AdminCustomerSupportConnectionMethodsFaq,
   AdminCustomerSupportHiringBenefitsFaq,
   HiringAdminCustomerSupportCostIntroFaq,
-} from "@/components/templates/CatLayout/Faqs/AdminCustomerSupportFaqs";
+} from "@/components/layouts/cat/faqs/AdminCustomerSupportFaqs";
 import {
   CAT_WRITING_TRANSLATION_EXPERTS_CATEGORIES,
   CAT_WRITING_TRANSLATION_FREELANCER_CATEGORIES,
@@ -89,7 +89,7 @@ import {
   HiringWritingTranslationCostIntroFaq,
   WritingTranslationConnectionMethodsFaq,
   WritingTranslationHiringBenefitsFaq,
-} from "@/components/templates/CatLayout/Faqs/WritingTranslationFaqs";
+} from "@/components/layouts/cat/faqs/WritingTranslationFaqs";
 import {
   CAT_FINANCE_ACCOUNTING_EXPERTS_CATEGORIES,
   CAT_FINANCE_ACCOUNTING_FREELANCER_CATEGORIES,
@@ -106,7 +106,7 @@ import {
   HiringHrTrainingCostIntroFaq,
   HrTrainingConnectionMethodsFaq,
   HrTrainingHiringBenefitsFaq,
-} from "@/components/templates/CatLayout/Faqs/HrTrainingFaqs";
+} from "@/components/layouts/cat/faqs/HrTrainingFaqs";
 import {
   CAT_LEGAL_EXPERTS_CATEGORIES,
   CAT_LEGAL_FREELANCER_CATEGORIES,
@@ -117,7 +117,7 @@ import {
   HiringLegalCostIntroFaq,
   LegalConnectionMethodsFaq,
   LegalHiringBenefitsFaq,
-} from "@/components/templates/CatLayout/Faqs/LegalFaqs";
+} from "@/components/layouts/cat/faqs/LegalFaqs";
 import {
   CAT_ENGINEERING_ARCHITECTURE_EXPERTS_CATEGORIES,
   CAT_ENGINEERING_ARCHITECTURE_FREELANCER_CATEGORIES,
@@ -128,7 +128,7 @@ import {
   EngineeringArchitectureConnectionMethodsFaq,
   EngineeringArchitectureHiringBenefitsFaq,
   HiringEngineeringArchitectureCostIntroFaq,
-} from "@/components/templates/CatLayout/Faqs/EngineeringArchitectureFaqs";
+} from "@/components/layouts/cat/faqs/EngineeringArchitectureFaqs";
 
 const Category = () => {
   const router = useRouter();

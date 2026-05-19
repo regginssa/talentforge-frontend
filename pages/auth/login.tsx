@@ -1,6 +1,6 @@
 import { Button, Input } from "@/components/atoms";
 import { SocialAuthButtonGroup } from "@/components/molecules";
-import { LoginLayout } from "@/components/templates/auth/LoginLayout";
+import { LoginLayout } from "@/components/layouts/auth/LoginLayout";
 import AuthAPI, { setAuthToken } from "@/lib/api/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
