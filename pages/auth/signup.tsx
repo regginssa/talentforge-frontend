@@ -6,7 +6,8 @@ import Link from "next/link";
 import GEO from "@/lib/api/geo";
 import { SocialAuthButtonGroup } from "@/components/molecules";
 import SignupLayout from "@/components/templates/auth/SignupLayout";
-import AuthAPI from "@/lib/api/auth";
+import AuthAPI, { setAuthToken } from "@/lib/api/auth";
+import { toast } from "sonner";
 
 type TUserType = "client" | "talent";
 
@@ -92,7 +93,7 @@ const SignUp = () => {
 
     if (!isValid) return;
 
-    const user = await AuthAPI.signup({
+    const data = await AuthAPI.signup({
       ...formData,
       accountType: userType,
       countryCode:
@@ -103,7 +104,10 @@ const SignUp = () => {
       signinOption: "email",
     } as any);
 
-    // 👉 call API here
+    if (!data) return;
+    const { token, user } = data;
+    setAuthToken(token);
+    toast.success(`Welcome ${user.firstName}`);
   };
 
   return (
@@ -127,7 +131,10 @@ const SignUp = () => {
       ) : (
         <>
           <div className="text-center">
-            <h1 className="text-4xl mb-8">Sign up to hire talent</h1>
+            <h1 className="text-4xl mb-8">
+              Sign up to{" "}
+              {userType === "client" ? "hire talent" : "find work you love"}
+            </h1>
 
             <SocialAuthButtonGroup />
 
