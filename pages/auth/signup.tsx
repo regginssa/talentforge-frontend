@@ -24,6 +24,7 @@ const SignUp = () => {
     terms: false,
   });
   const [errors, setErrors] = useState<any>();
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -93,6 +94,8 @@ const SignUp = () => {
 
     if (!isValid) return;
 
+    setLoading(true);
+
     const data = await AuthAPI.signup({
       ...formData,
       accountType: userType,
@@ -104,10 +107,10 @@ const SignUp = () => {
       signinOption: "email",
     } as any);
 
-    if (!data) return;
-    const { token, user } = data;
-    setAuthToken(token);
-    toast.success(`Welcome ${user.firstName}`);
+    if (!data?.token) return setLoading(false);
+    setAuthToken(data.token);
+    toast.success(`Welcome ${data.user.firstName}`, { position: "top-center" });
+    setLoading(false);
   };
 
   return (
@@ -261,8 +264,8 @@ const SignUp = () => {
                 <Button
                   type="primary"
                   label="Create my account"
-                  classname="inline!"
                   size="medium"
+                  loading={loading}
                 />
               </div>
             </form>

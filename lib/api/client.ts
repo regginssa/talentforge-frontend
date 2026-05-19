@@ -36,8 +36,10 @@ export async function request<T>(
   const data = await res.json().catch(() => null);
 
   if (!res.ok) {
-    toast.error(data?.message || data?.msg || "API Error");
-    throw new Error(data?.message || data?.msg || "API Error");
+    toast.error(data?.message || data?.msg || "API Error", {
+      position: "top-center",
+    });
+    // throw new Error(data?.message || data?.msg || "API Error");
   }
 
   console.log("data: ", data);

@@ -60,6 +60,7 @@ const Button: React.FC<ButtonProps> = ({
       <motion.button
         whileTap={{ scale: 0.95 }}
         className={`${buttonClasses.primary} ${buttonClasses.size} ${classname} rounded-xl transition-all duration-150 ease-in-out flex items-center justify-center gap-2`}
+        disabled={loading || disabled}
         onClick={onClick}
       >
         {icon && !loading && (
@@ -86,8 +87,8 @@ const Button: React.FC<ButtonProps> = ({
             ? "opacity-50 cursor-not-allowed"
             : "cursor-pointer"
         } ${sizeClasses[size]}`}
-        onClick={onClick}
         disabled={disabled || loading}
+        onClick={onClick}
       >
         {icon && !loading && <Icon icon={icon} className="w-4 h-4 mr-2" />}
         {label}
@@ -115,6 +116,7 @@ const Button: React.FC<ButtonProps> = ({
         className={`${
           sizeClasses[size]
         } ${classname} transition-all duration-300 ease-in-out cursor-pointer`}
+        disabled={disabled || loading}
       >
         {label}
       </button>
@@ -125,6 +127,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <button
         className={`p-2 rounded-full hover:bg-[#252525] transition-all duration-300 ease-in-out cursor-pointer ${classname}`}
+        disabled={disabled || loading}
         onClick={onClick}
       >
         <Icon

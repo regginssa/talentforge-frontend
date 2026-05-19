@@ -3,13 +3,16 @@ import { request } from "./client";
 
 const AuthAPI = {
   signup: async (body: User) =>
-    await request("/signup", {
+    await request("/auth/signup", {
       method: "POST",
       body: JSON.stringify(body),
     }),
 
   signin: async (body: any) =>
-    await request("/signin", { method: "POST", body: JSON.stringify(body) }),
+    await request("/auth/signin", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 };
 
 export const TOKEN_KEY = "Authenticate-Token";
