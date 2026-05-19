@@ -9,3 +9,4 @@ export { default as SearchInput } from "./SearchInput";
 export { default as ServiceCard } from "./ServiceCard";
 export { default as ServiceCategoryCard } from "./ServiceCategoryCard";
 export { default as SocialAuthButtonGroup } from "./SocialAuthButtonGroup";
+export { default as SocialGroup } from "./SocialGroup";

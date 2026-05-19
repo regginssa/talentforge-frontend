@@ -12,6 +12,7 @@ interface ButtonProps {
   href?: string;
   width?: "full";
   classname?: string;
+  iconClassName?: string;
   onClick?: () => void;
 }
 
@@ -25,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   href,
   width,
   classname,
+  iconClassName,
   onClick,
 }) => {
   const buttonClasses = {
@@ -132,7 +134,7 @@ const Button: React.FC<ButtonProps> = ({
       >
         <Icon
           icon={icon}
-          className={`${iconSizeClasses[size]}`}
+          className={`${iconSizeClasses[size]} ${iconClassName}`}
           color="white"
         />
       </button>
