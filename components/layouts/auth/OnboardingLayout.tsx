@@ -48,7 +48,7 @@ export const OnboardingLayout: React.FC<OnboardingLayoutProps> = ({
   return (
     <div ref={ref} className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="w-[80%] mx-auto py-6 flex items-center justify-between bg-white">
+      <header className="w-full max-w-[80%] mx-auto p-6 flex items-center justify-between bg-white">
         <h1 className="text-2xl font-bold">WorkLanc</h1>
         <div ref={ref} className="relative">
           <button className="cursor-pointer" onClick={() => setOpen(true)}>
@@ -98,7 +98,9 @@ export const OnboardingLayout: React.FC<OnboardingLayoutProps> = ({
       </header>
 
       {/* Main */}
-      <main className="flex-1 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto">
+      <main
+        className={`flex-1 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto ${!showFooter && "mb-20"}`}
+      >
         {children}
       </main>
 
