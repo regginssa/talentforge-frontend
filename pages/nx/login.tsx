@@ -106,7 +106,7 @@ const Login = () => {
             label="Sign Up"
             size="medium"
             classname="h-10! rounded-md!"
-            onClick={() => router.push("/auth/signup")}
+            onClick={() => router.push("/nx/signup")}
           />
         </form>
       </div>

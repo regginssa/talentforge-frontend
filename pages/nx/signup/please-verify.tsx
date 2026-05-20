@@ -10,12 +10,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const PleaseVerify = () => {
   const [email, setEmail] = useState("");
+  const router = useRouter();
 
   return (
-    <OnboardingLayout>
+    <OnboardingLayout showFooter>
       <Icon icon="material-symbols-light:mail-shield-outline" width={120} />
       <div className="flex flex-col items-center justify-center mt-8 gap-8">
         <h3 className="text-lg">Verify your email to continue</h3>
@@ -31,6 +33,7 @@ const PleaseVerify = () => {
             type="primary"
             label="Send again"
             classname="font-semibold! rounded-full! text-sm!"
+            onClick={() => router.push("/nx/create-profile")}
           />
         </div>
 
@@ -38,8 +41,8 @@ const PleaseVerify = () => {
           <DialogTrigger className="text-sm underline cursor-pointer">
             Didn't receive email?
           </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
+          <DialogContent className="min-w-xl">
+            <DialogHeader className="p-2">
               <DialogTitle className="text-xl">
                 Didn't receive email?
               </DialogTitle>
@@ -48,7 +51,7 @@ const PleaseVerify = () => {
               </DialogDescription>
             </DialogHeader>
 
-            <div className="p-4 space-y-6">
+            <div className="px-6 py-4 space-y-6">
               <ul className="list-decimal text-sm space-y-4">
                 <li>Resend the email</li>
                 <li>
@@ -75,21 +78,22 @@ const PleaseVerify = () => {
                 <li>Change your email</li>
               </ul>
 
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-4">
                 <Input
                   type="email"
                   placeholder="Email address"
                   name="email"
+                  classname="w-2/3"
                   value={email}
                   onChange={(e: any) => setEmail(e.target.value)}
                 />
+                <Button
+                  type="outline"
+                  size="medium"
+                  label="Update and reset"
+                  classname="text-sm! rounded-full! h-10! whitespace-nowrap"
+                />
               </div>
-              <Button
-                type="outline"
-                size="medium"
-                label="Update and reset"
-                classname="text-sm! rounded-full!"
-              />
             </div>
           </DialogContent>
         </Dialog>
