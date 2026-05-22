@@ -44,3 +44,36 @@ export async function request<T>(
 
   return data;
 }
+
+export async function uploadRequest(
+  endpoint: string,
+  formData: FormData,
+): Promise<any> {
+  const token = getAuthToken();
+
+  const res = await fetch(`${BASE_URL}/api${endpoint}`, {
+    method: "POST",
+    headers: {
+      ...(token ? { Authorization: token } : {}),
+    },
+    body: formData,
+  });
+
+  if (res.status === 401) {
+    removeAuthToken();
+    toast.error("Session expired");
+    window.location.href = "/auth/login";
+    return null;
+  }
+
+  const data = await res.json().catch(() => null);
+
+  if (!res.ok) {
+    toast.error(data?.message || data?.msg || "Upload failed", {
+      position: "top-center",
+    });
+    return null;
+  }
+
+  return data;
+}
