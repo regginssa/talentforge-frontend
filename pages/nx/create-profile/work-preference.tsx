@@ -95,7 +95,7 @@ export default function WorkPerformance() {
             type="primary"
             label="Next, create a profile"
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => (window.location.href = "/nx/create-profile/goal")}
+            onClick={() => router.push("/nx/create-profile/resume-import")}
           />
         </div>
       </div>

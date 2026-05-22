@@ -37,8 +37,8 @@ const Button: React.FC<ButtonProps> = ({
       size === "small"
         ? "px-5 py-2 text-sm"
         : size === "medium"
-          ? "px-7 py-[10px] text-sm"
-          : "px-12 py-3 text-lg"
+        ? "px-7 py-[10px] text-sm"
+        : "px-12 py-3 text-lg"
     } ${width === "full" && "w-full"}`,
     fontSize: `${
       size === "small" ? "text-xs" : size === "medium" ? "text-sm" : "text-sm"
@@ -84,7 +84,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <motion.button
         whileTap={{ scale: 0.95 }}
-        className={`border-2 border-blue-600 text-blue-600 ${classname} hover:border-blue-500 hover:text-blue-500 font-semibold rounded-xl transition-all duration-300 ease-in-out flex items-center gap-2 justify-center ${
+        className={`border-2 border-blue-600 text-blue-700 ${classname} hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 font-semibold rounded-xl transition-all duration-300 ease-in-out flex items-center gap-2 justify-center ${
           loading || disabled
             ? "opacity-50 cursor-not-allowed"
             : "cursor-pointer"
@@ -92,7 +92,7 @@ const Button: React.FC<ButtonProps> = ({
         disabled={disabled || loading}
         onClick={onClick}
       >
-        {icon && !loading && <Icon icon={icon} className="w-4 h-4 mr-2" />}
+        {icon && !loading && <Icon icon={icon} className="w-4 h-4" />}
         {label}
         {loading && (
           <Icon icon="svg-spinners:bars-rotate-fade" className="w-4 h-4 ml-2" />
@@ -115,9 +115,7 @@ const Button: React.FC<ButtonProps> = ({
   if (type === "text" && size) {
     return (
       <button
-        className={`${
-          sizeClasses[size]
-        } ${classname} transition-all duration-300 ease-in-out cursor-pointer`}
+        className={`${sizeClasses[size]} ${classname} transition-all duration-300 ease-in-out cursor-pointer`}
         disabled={disabled || loading}
       >
         {label}
