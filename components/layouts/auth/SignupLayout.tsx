@@ -55,7 +55,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({
           <p>
             {isLogin ? "Don't have an account?" : "Already have an account?"}
           </p>
-          <Link href="/auth/login" className="text-blue-600 underline">
+          <Link href="/nx/login" className="text-blue-600 underline">
             {isLogin ? "Sign Up" : "Log in"}
           </Link>
         </div>
