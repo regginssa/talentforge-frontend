@@ -195,6 +195,7 @@ export default function ResumeImport() {
             size="medium"
             label="Fill out manually (15 min)"
             classname="font-medium! text-sm! py-2.5! w-full! rounded-full!"
+            onClick={() => router.push("/nx/create-profile/categories")}
           />
         </div>
         <div className="flex-1"></div>

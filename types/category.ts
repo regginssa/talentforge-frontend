@@ -1,4 +1,4 @@
-export interface CategoryChildren {
+export interface CategoryChild {
   name: string;
   slug: string;
 }
@@ -6,5 +6,9 @@ export interface CategoryChildren {
 export interface Category {
   name: string;
   slug: string;
-  children: CategoryChildren[];
+  children: CategoryChild[];
+}
+
+export interface CategoryGroup {
+  parent: Category;
 }
