@@ -21,4 +21,4 @@ export { default as Textarea } from "./Textarea";
 export { default as SearchCombobox } from "./SearchCombobox";
 export { default as Dropdown } from "./Dropdown";
 export { default as Checkbox } from "./Checkbox";
-export { default as AutoComplete } from "./AutoComplete";
+export { default as AutoCompleteSelector } from "./AutoCompleteSelector";

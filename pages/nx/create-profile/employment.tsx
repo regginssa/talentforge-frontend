@@ -29,6 +29,9 @@ import {
 } from "@/components/ui/dialog";
 import { countries } from "country-data-list";
 import { DateDropdown } from "@/components/molecules";
+import FolderIcon from "@/public/assets/svgs/icons/other/folder.svg";
+import Image from "next/image";
+import { formatMonthYear } from "@/utils/df";
 
 export default function Employment() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -50,6 +53,32 @@ export default function Employment() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSave = () => {
+    setExperiences([...experiences, formData]);
+    setFormData({
+      title: "",
+      company: "",
+      location: {
+        city: "",
+        country: "",
+      },
+      isCurrent: false,
+      startedAt: new Date(),
+      endAt: new Date(),
+      description: "",
+    });
+    setOpen(false);
+  };
+
+  const handleDelete = (index: number) => {
+    setExperiences(experiences.filter((_, i) => i !== index));
+  };
+
+  const handleEdit = (index: number) => {
+    setFormData(experiences[index]);
+    setOpen(true);
   };
 
   return (
@@ -76,13 +105,54 @@ export default function Employment() {
             <CarouselItem key={index} className="basis-1/2 lg:basis-1/3">
               <div className="p-1">
                 <Card className="border-2 border-dashed border-slate-400">
-                  <CardContent className="flex flex-col gap-4 aspect-square items-start justify-center p-6">
-                    <span className="flex items-center justify-center ronded-md bg-green-600 rounded-full">
-                      <Icon icon="mdi:plus" className="text-white w-6 h-6" />
-                    </span>
-                    <p className="text-xl font-medium text-slate-800">
-                      Add experience
-                    </p>
+                  <CardContent className="p-6 relative aspect-square flex items-center">
+                    <div className="flex items-start gap-2">
+                      <Image
+                        src={FolderIcon}
+                        alt="Folder"
+                        className="w-[60px] h-auto object-cover"
+                      />
+                      <div className="space-y-4">
+                        <h3 className="text-2xl line-clamp-3">
+                          {experience.title}
+                        </h3>
+
+                        <div className="space-y-2 text-sm">
+                          <p className="font-medium text-slate-800">
+                            {experience.company} |{" "}
+                            {formatMonthYear(experience.startedAt)}
+                            {experience.isCurrent
+                              ? " - Present"
+                              : ` - ${formatMonthYear(experience.endAt)}`}
+                          </p>
+                          <p className="text-slate-600">
+                            {experience.location.city},{" "}
+                            {experience.location.country}
+                          </p>
+                        </div>
+                        <p className="text-slate-600 line-clamp-3 text-sm">
+                          {experience.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="absolute w-full top-0 right-0 flex items-center justify-end gap-2 p-4">
+                      <Button
+                        type="outline"
+                        size="small"
+                        icon="mdi:pencil-outline"
+                        classname="p-2! rounded-full! border!"
+                        onClick={() => handleEdit(index)}
+                      />
+
+                      <Button
+                        type="outline"
+                        size="small"
+                        icon="mdi:trash-can-outline"
+                        classname="p-2! rounded-full! border!"
+                        onClick={() => handleDelete(index)}
+                      />
+                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -94,8 +164,8 @@ export default function Employment() {
                 className="border-2 border-dashed border-slate-400 cursor-pointer bg-slate-50"
                 onClick={() => setOpen(true)}
               >
-                <CardContent className="flex flex-col gap-4 aspect-square items-start justify-center p-6">
-                  <span className="flex items-center justify-center ronded-md bg-green-600 rounded-full">
+                <CardContent className="flex flex-col gap-4 aspect-square items-center justify-center p-6">
+                  <span className="flex items-center justify-center ronded-md bg-blue-600 rounded-full">
                     <Icon icon="mdi:plus" className="text-white w-6 h-6" />
                   </span>
                   <p className="text-xl font-medium text-slate-800">
@@ -161,12 +231,20 @@ export default function Employment() {
                 <div className="flex-1">
                   <Input
                     type="text"
-                    name="location.city"
-                    placeholder="Ex: New York"
+                    name="city"
+                    placeholder="Ex: London"
                     labelClassName="text-sm font-medium"
                     required
                     value={formData.location.city}
-                    onChange={handleInputChange}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setFormData({
+                        ...formData,
+                        location: {
+                          ...formData.location,
+                          city: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </div>
                 <div className="flex-1">
@@ -217,6 +295,7 @@ export default function Employment() {
                 value={formData.endAt}
                 onChange={(v: Date) => setFormData({ ...formData, endAt: v })}
                 classname="flex-1"
+                disabled={formData.isCurrent}
               />
             </div>
 
@@ -244,6 +323,7 @@ export default function Employment() {
               type="primary"
               label="Save"
               classname="py-2.5! px-5! rounded-full! text-sm! font-medium!"
+              onClick={handleSave}
             />
           </DialogFooter>
         </DialogContent>

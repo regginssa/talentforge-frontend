@@ -16,12 +16,15 @@ interface DropdownProps {
   value: string;
   classname?: string;
   error?: string;
+  disabled?: boolean;
   onSelect: (value: string) => void;
 }
 
-function normalizeOptions(options: string[] | DropdownOption[]): DropdownOption[] {
+function normalizeOptions(
+  options: string[] | DropdownOption[]
+): DropdownOption[] {
   return options.map((option) =>
-    typeof option === "string" ? { label: option, value: option } : option,
+    typeof option === "string" ? { label: option, value: option } : option
   );
 }
 
@@ -34,6 +37,7 @@ export default function Dropdown({
   value,
   classname = "",
   error,
+  disabled = false,
   onSelect,
 }: DropdownProps) {
   const [open, setOpen] = useState(false);
@@ -56,7 +60,10 @@ export default function Dropdown({
   }, []);
 
   return (
-    <div ref={rootRef} className={`flex w-full flex-col items-start gap-1 ${classname}`}>
+    <div
+      ref={rootRef}
+      className={`flex w-full flex-col items-start gap-1 ${classname}`}
+    >
       {label && <label className="text-sm font-medium">{label}</label>}
 
       <div className="relative w-full">
@@ -66,8 +73,11 @@ export default function Dropdown({
           className={`flex h-10 w-full items-center gap-2 rounded-lg px-4 py-2 transition-all duration-300 ${
             error
               ? "border-2 border-red-500"
+              : disabled
+              ? "bg-slate-100 cursor-not-allowed! border border-slate-400"
               : "border border-slate-400 hover:border-2 hover:border-black"
           }`}
+          disabled={disabled}
           onClick={() => setOpen((prev) => !prev)}
         >
           {icon && (

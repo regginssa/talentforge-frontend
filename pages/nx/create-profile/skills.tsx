@@ -1,5 +1,5 @@
-import { AutoComplete, Button } from "@/components/atoms";
-import { AutoCompleteOption } from "@/components/atoms/AutoComplete";
+import { AutoCompleteSelector, Button } from "@/components/atoms";
+import { AutoCompleteOption } from "@/components/atoms/AutoCompleteSelector";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { MOCK_SKILLS, type MockSkill } from "@/static/data/mock-skills";
 import { useState } from "react";
@@ -45,7 +45,7 @@ export default function Skills() {
     >
       <div className="flex items-start gap-20">
         <div className="w-3/5">
-          <AutoComplete
+          <AutoCompleteSelector
             label="Your skills"
             subLabel={`Max 15 skills`}
             placeholder="Enter skills here"

@@ -42,6 +42,7 @@ export interface DateDropdownProps {
   error?: string;
   classname?: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
 export default function DateDropdown({
@@ -56,6 +57,7 @@ export default function DateDropdown({
   error,
   classname = "",
   required = false,
+  disabled = false,
 }: DateDropdownProps) {
   const currentYear = new Date().getFullYear();
   const yearMin = minYear ?? currentYear - 80;
@@ -93,6 +95,7 @@ export default function DateDropdown({
           value={monthValue}
           onSelect={handleMonthSelect}
           classname="flex-1"
+          disabled={disabled}
         />
         <Dropdown
           name={`${name}-year`}
@@ -101,6 +104,7 @@ export default function DateDropdown({
           value={yearValue}
           onSelect={handleYearSelect}
           classname="flex-1"
+          disabled={disabled}
         />
       </div>
 
