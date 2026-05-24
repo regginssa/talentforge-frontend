@@ -13,6 +13,7 @@ interface ButtonProps {
   width?: "full";
   classname?: string;
   iconClassName?: string;
+  isSubmit?: boolean;
   onClick?: () => void;
 }
 
@@ -28,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
   classname,
   iconClassName,
   onClick,
+  isSubmit = false,
 }) => {
   const buttonClasses = {
     primary: `${
@@ -66,6 +68,7 @@ const Button: React.FC<ButtonProps> = ({
         className={`${buttonClasses.primary} ${buttonClasses.size} ${classname} rounded-xl transition-all duration-150 ease-in-out flex items-center justify-center gap-2`}
         disabled={loading || disabled}
         onClick={onClick}
+        type={isSubmit ? "submit" : "button"}
       >
         {icon && !loading && (
           <Icon

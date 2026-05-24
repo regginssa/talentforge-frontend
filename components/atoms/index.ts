@@ -17,6 +17,8 @@ export { default as Slider } from "./Slider";
 export { default as Switch } from "./Switch";
 export { default as TabBar } from "./TabBar";
 export { default as Input } from "./Input";
+export { default as Textarea } from "./Textarea";
 export { default as SearchCombobox } from "./SearchCombobox";
+export { default as Dropdown } from "./Dropdown";
 export { default as Checkbox } from "./Checkbox";
 export { default as AutoComplete } from "./AutoComplete";

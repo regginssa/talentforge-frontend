@@ -1,7 +1,13 @@
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
-import { Button, Checkbox, Input, SearchCombobox } from "@/components/atoms";
+import {
+  Button,
+  Checkbox,
+  Input,
+  SearchCombobox,
+  Textarea,
+} from "@/components/atoms";
 import {
   Carousel,
   CarouselContent,
@@ -15,11 +21,14 @@ import { useState } from "react";
 import { Experience } from "@/types/user";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { countries } from "country-data-list";
+import { DateDropdown } from "@/components/molecules";
 
 export default function Employment() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -33,7 +42,7 @@ export default function Employment() {
     isCurrent: false,
     startedAt: new Date(),
     endAt: new Date(),
-    descrption: "",
+    description: "",
   });
   const [open, setOpen] = useState(false);
 
@@ -124,7 +133,7 @@ export default function Employment() {
             <DialogTitle className="text-3xl">Add Work Experience</DialogTitle>
           </DialogHeader>
 
-          <form className="space-y-6 p-4">
+          <form className="space-y-6 p-4 no-scrollbar max-h-[60vh] overflow-y-auto">
             <Input
               type="text"
               name="title"
@@ -146,31 +155,35 @@ export default function Employment() {
               onChange={handleInputChange}
             />
 
-            <div className="flex items-center gap-6">
-              <Input
-                type="text"
-                name="location.city"
-                label="City"
-                placeholder="Ex: New York"
-                labelClassName="text-sm font-medium"
-                classname="flex-1"
-                required
-                value={formData.location.city}
-                onChange={handleInputChange}
-              />
-              <SearchCombobox
-                label="Country"
-                name="country"
-                options={countries.all.map((c) => c.name)}
-                defaultOption={formData.location.country}
-                onSelect={(v: string) =>
-                  setFormData({
-                    ...formData,
-                    location: { ...formData.location, country: v },
-                  })
-                }
-                classname="flex-1"
-              />
+            <div className="">
+              <label className="text-sm font-medium">Location</label>
+              <div className="flex items-center gap-6 mt-1">
+                <div className="flex-1">
+                  <Input
+                    type="text"
+                    name="location.city"
+                    placeholder="Ex: New York"
+                    labelClassName="text-sm font-medium"
+                    required
+                    value={formData.location.city}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="flex-1">
+                  <SearchCombobox
+                    name="country"
+                    placeholder="Country"
+                    options={countries.all.map((c) => c.name)}
+                    defaultOption={formData.location.country}
+                    onSelect={(v: string) =>
+                      setFormData({
+                        ...formData,
+                        location: { ...formData.location, country: v },
+                      })
+                    }
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center gap-2">
@@ -185,7 +198,54 @@ export default function Employment() {
                 I am currently working in this role
               </label>
             </div>
+
+            <div className="flex items-center gap-6">
+              <DateDropdown
+                label="Start Date"
+                name="startedAt"
+                required
+                value={formData.startedAt}
+                onChange={(v: Date) =>
+                  setFormData({ ...formData, startedAt: v })
+                }
+                classname="flex-1"
+              />
+              <DateDropdown
+                label="End Date"
+                name="endAt"
+                required
+                value={formData.endAt}
+                onChange={(v: Date) => setFormData({ ...formData, endAt: v })}
+                classname="flex-1"
+              />
+            </div>
+
+            <Textarea
+              name="description"
+              label="Description"
+              labelClassName="text-sm font-medium"
+              value={formData.description}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+            />
           </form>
+
+          <DialogFooter>
+            <DialogClose asChild>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="py-2 px-4 rounded-full text-sm text-slate-600 font-medium cursor-pointer"
+              >
+                Cancel
+              </motion.button>
+            </DialogClose>
+            <Button
+              type="primary"
+              label="Save"
+              classname="py-2.5! px-5! rounded-full! text-sm! font-medium!"
+            />
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </CreateProfileLayout>

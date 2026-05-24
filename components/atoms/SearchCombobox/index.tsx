@@ -68,7 +68,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
         <input
           name={name}
           placeholder={placeholder}
-          className="bg-transparent border-none outline-none text-sm flex-1"
+          className="bg-transparent border-none outline-none text-sm flex-1 placeholder:text-slate-600"
           value={defaultOption}
           readOnly
         />

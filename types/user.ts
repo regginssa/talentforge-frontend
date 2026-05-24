@@ -17,7 +17,7 @@ export type Experience = {
   startedAt: Date;
   endAt: Date;
   isCurrent: boolean;
-  descrption: string;
+  description: string;
 };
 
 export interface User {
