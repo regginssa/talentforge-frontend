@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 export default function Title() {
   const [title, setTitle] = useState("");
-  const [titleError, setTitleError] = useState("");
+  const [titleError, setTitleError] = useState<string | null>(null);
   const router = useRouter();
 
   const validateTitle = () => {
@@ -15,7 +15,7 @@ export default function Title() {
     } else if (title.length > 62) {
       setTitleError("Title must be less than 62 characters");
     } else {
-      setTitleError("");
+      setTitleError(null);
     }
   };
 
@@ -40,8 +40,11 @@ export default function Title() {
           name="title"
           classname="text-sm!"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          error={titleError}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            validateTitle();
+          }}
+          error={titleError ?? undefined}
         />
       </div>
 
@@ -56,12 +59,11 @@ export default function Title() {
 
         <Button
           type="primary"
-          label="Next, your profile title"
+          label="Next, add your experience"
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
           onClick={() => {
-            validateTitle();
             if (titleError) return;
-            router.push("/nx/create-profile/title");
+            router.push("/nx/create-profile/employment");
           }}
         />
       </div>

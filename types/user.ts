@@ -7,6 +7,18 @@ export type GoalType =
   | "gain_experience"
   | "no_goal_yet";
 export type WorkPreferenceType = "find_jobs" | "sell_services";
+export type Experience = {
+  title: string;
+  company: string;
+  location: {
+    city: string;
+    country: string;
+  };
+  startedAt: Date;
+  endAt: Date;
+  isCurrent: boolean;
+  descrption: string;
+};
 
 export interface User {
   id: number;

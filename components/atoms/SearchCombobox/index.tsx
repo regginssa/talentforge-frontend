@@ -49,14 +49,18 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
   }, []);
 
   return (
-    <div ref={ref} className="flex flex-col items-start gap-2 relative">
+    <div ref={ref} className="flex flex-col items-start gap-1 relative">
       {label && <label>{label}</label>}
 
       {/* trigger */}
       <motion.button
         type="button"
         whileTap={{ scale: 0.97 }}
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-2 hover:border-black"} transition-all duration-300 ${classname}`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${
+          error
+            ? "border-2 border-red-500"
+            : "border border-slate-400 hover:border-2 hover:border-black"
+        } transition-all duration-300 ${classname}`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {icon && <Icon icon={icon} width={14} />}
@@ -72,7 +76,7 @@ const SearchCombobox: React.FC<SearchComboboxProps> = ({
         <Icon
           icon="mdi:chevron-down"
           width={20}
-          className={`transition-transform duration-200 ${
+          className={`transition-transform duration-200 text-slate-700 ${
             open ? "rotate-180" : ""
           }`}
         />

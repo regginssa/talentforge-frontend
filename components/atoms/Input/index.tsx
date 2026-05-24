@@ -6,10 +6,12 @@ interface InputProps {
   name: string;
   label?: string;
   placeholder?: string;
+  labelClassName?: string;
   classname?: string;
   icon?: string;
   value: any;
   error?: string;
+  required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,19 +20,29 @@ const Input: React.FC<InputProps> = ({
   name,
   label,
   placeholder,
+  labelClassName,
   classname,
   icon,
   value,
   error,
   onChange,
+  required,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className={`flex flex-col items-start gap-1 ${classname}`}>
-      {label && <label className="">{label}</label>}
+      {label && (
+        <label className={labelClassName}>
+          {label} {required && <span className="">*</span>}
+        </label>
+      )}
       <div
-        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${error ? "border-2 border-red-500" : "border border-slate-400 hover:border-2 hover:border-black focus-within:border-2 focus-within:border-black"} group transition-all duration-200`}
+        className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${
+          error
+            ? "border-2 border-red-500"
+            : "border border-slate-400 hover:border-2 hover:border-black focus-within:border-2 focus-within:border-black"
+        } group transition-all duration-200`}
       >
         {icon && (
           <Icon
@@ -44,6 +56,7 @@ const Input: React.FC<InputProps> = ({
           name={name}
           placeholder={placeholder}
           className="bg-transparent border-none outline-none text-sm flex-1 placeholder:text-slate-600"
+          required={required}
           value={value}
           onChange={(e: any) => onChange(e)}
         />

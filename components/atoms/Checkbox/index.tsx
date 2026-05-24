@@ -22,7 +22,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       onClick={() => onCheck?.(!checked)}
       whileTap={{ scale: 0.9 }}
       className={`
-        w-6 h-6 p-1 rounded-sm flex items-center justify-center 
+        w-6 h-6 p-1 rounded-sm flex items-center justify-center cursor-pointer 
         transition-colors duration-200
         ${
           error
