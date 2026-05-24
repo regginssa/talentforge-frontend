@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className={`fixed top-[70px] left-0 mt-2 w-full z-50 border-t-[1px] border-t-gray-300 shadow-md `}
+                className={`fixed top-[70px] left-0 mt-2 w-full z-50 border-t-[1px] bg-white border-t-gray-300 shadow-md `}
               >
                 <div className="w-[75%] mx-auto py-8">{item.children}</div>
               </motion.div>

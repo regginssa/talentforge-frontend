@@ -9,6 +9,7 @@ import SignupLayout from "@/components/layouts/auth/SignupLayout";
 import AuthAPI, { setAuthToken } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 type TUserType = "client" | "talent";
 
@@ -27,6 +28,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState<any>();
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -92,27 +94,28 @@ const SignUp = () => {
   const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const isValid = validate();
+    // const isValid = validate();
 
-    if (!isValid) return;
+    // if (!isValid) return;
 
-    setLoading(true);
+    // setLoading(true);
 
-    const data = await AuthAPI.signup({
-      ...formData,
-      accountType: userType,
-      countryCode:
-        countries.all.find((c) => c.name === formData.country)?.alpha2 || "US",
-      createdAt: new Date(),
-      appleId: null,
-      googleId: null,
-      signinOption: "email",
-    } as any);
+    // const data = await AuthAPI.signup({
+    //   ...formData,
+    //   accountType: userType,
+    //   countryCode:
+    //     countries.all.find((c) => c.name === formData.country)?.alpha2 || "US",
+    //   createdAt: new Date(),
+    //   appleId: null,
+    //   googleId: null,
+    //   signinOption: "email",
+    // } as any);
 
-    if (!data?.token) return setLoading(false);
-    setAuthToken(data.token);
-    toast.success(`Welcome ${data.user.firstName}`, { position: "top-center" });
-    setLoading(false);
+    // if (!data?.token) return setLoading(false);
+    // setAuthToken(data.token);
+    toast.success(`Welcome Jack`, { position: "top-center" });
+    router.push("/nx/signup/please-verify");
+    // setLoading(false);
   };
 
   return (
@@ -269,6 +272,7 @@ const SignUp = () => {
                   label="Create my account"
                   size="medium"
                   loading={loading}
+                  isSubmit
                   classname="rounded-md!"
                 />
               </div>
