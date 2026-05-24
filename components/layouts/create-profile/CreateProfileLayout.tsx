@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { TSEO } from "@/types/components.types";
-import { SEO } from "@/components/atoms";
+import { SEO, WorkLancLogo } from "@/components/atoms";
 import { Progress } from "@/components/ui/progress";
 
 interface CreateProfileLayoutProps {
@@ -44,7 +44,7 @@ export const CreateProfileLayout: React.FC<CreateProfileLayoutProps> = ({
       {seo && <SEO {...seo} />}
       {/* Header */}
       <header className="w-full max-w-[80%] mx-auto p-6 flex items-center justify-between bg-white">
-        <h1 className="text-2xl font-bold">WorkLanc</h1>
+        <WorkLancLogo />
         <div ref={ref} className="relative">
           <button className="cursor-pointer" onClick={() => setOpen(true)}>
             <Icon
