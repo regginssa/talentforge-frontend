@@ -12,6 +12,7 @@ interface InputProps {
   value: any;
   error?: string;
   required?: boolean;
+  disabled?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -27,6 +28,7 @@ const Input: React.FC<InputProps> = ({
   error,
   onChange,
   required,
+  disabled,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,6 +43,8 @@ const Input: React.FC<InputProps> = ({
         className={`w-full h-10 flex items-center gap-2 py-2 px-4 rounded-lg ${
           error
             ? "border-2 border-red-500"
+            : disabled
+            ? "border border-slate-400 bg-slate-100 cursor-not-allowed"
             : "border border-slate-400 hover:border-2 hover:border-black focus-within:border-2 focus-within:border-black"
         } group transition-all duration-200`}
       >
@@ -59,6 +63,7 @@ const Input: React.FC<InputProps> = ({
           required={required}
           value={value}
           onChange={(e: any) => onChange(e)}
+          disabled={disabled}
         />
 
         {type === "password" && (
