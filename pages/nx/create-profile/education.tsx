@@ -188,7 +188,7 @@ export default function ProfileEducation() {
             type="primary"
             label="Next, add languages"
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/title")}
+            onClick={() => router.push("/nx/create-profile/languages")}
           />
         </div>
       </div>

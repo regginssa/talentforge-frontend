@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 export type DropdownOption = {
   label: string;
-  value: string;
+  value: any;
 };
 
 interface DropdownProps {
@@ -70,7 +70,7 @@ export default function Dropdown({
         <motion.button
           type="button"
           whileTap={{ scale: 0.97 }}
-          className={`flex h-10 w-full items-center gap-2 rounded-lg px-4 py-2 transition-all duration-300 ${
+          className={`flex h-10 w-full items-center gap-2 rounded-lg px-4 py-2 transition-all duration-300 cursor-pointer ${
             error
               ? "border-2 border-red-500"
               : disabled

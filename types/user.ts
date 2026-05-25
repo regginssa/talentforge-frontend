@@ -7,6 +7,11 @@ export type GoalType =
   | "gain_experience"
   | "no_goal_yet";
 export type WorkPreferenceType = "find_jobs" | "sell_services";
+export type LanguageLevel = "basic" | "conversational" | "fluent" | "native";
+export type Language = {
+  name: string;
+  level: LanguageLevel;
+};
 export type Experience = {
   title: string;
   company: string;

@@ -133,9 +133,9 @@ function ProfileCard() {
         </div>
 
         <p className="text-2xl text-center">
-          “Upwork has enabled me to increase my rates. I know what I'm bringing
-          to the table and love the feeling of being able to help a variety of
-          clients.”
+          “WorkLanc has enabled me to increase my rates. I know what I'm
+          bringing to the table and love the feeling of being able to help a
+          variety of clients.”
         </p>
       </CardContent>
     </Card>
