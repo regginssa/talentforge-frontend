@@ -94,7 +94,7 @@ export const CreateProfileLayout: React.FC<CreateProfileLayoutProps> = ({
 
       {/* Main */}
       <AnimatePresence mode="wait">
-        <main className="flex-1 w-full max-w-7xl mx-auto mt-6 px-6">
+        <main className="flex-1 w-full max-w-7xl mx-auto mt-6 px-6 mb-10">
           <div className="space-y-6 mb-6">
             <div className="flex items-center gap-1 text-slate-600">
               {subtitle && <h2 className="text-lg font-medium">{subtitle}</h2>}

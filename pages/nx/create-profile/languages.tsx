@@ -147,7 +147,7 @@ export default function Languages() {
           type="primary"
           label="Next, write an overview"
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/employment")}
+          onClick={() => router.push("/nx/create-profile/overview")}
         />
       </div>
     </CreateProfileLayout>
