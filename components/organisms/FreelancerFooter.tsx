@@ -21,7 +21,7 @@ export default function FreelancerFooter() {
   ];
 
   return (
-    <footer className="max-w-7xl mx-auto border-t border-slate-200 py-14 text-xs text-slate-500">
+    <footer className="max-w-7xl mx-auto border-t border-slate-200 py-14 text-xs text-slate-500 mt-10">
       <div className="grid grid-cols-4">
         <ul className="flex flex-col gap-4 ">
           {navs.slice(0, 3).map((n) => (

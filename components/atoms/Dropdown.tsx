@@ -14,6 +14,7 @@ interface DropdownProps {
   icon?: string;
   options: string[] | DropdownOption[];
   value: string;
+  labelClassName?: string;
   classname?: string;
   error?: string;
   disabled?: boolean;
@@ -35,6 +36,7 @@ export default function Dropdown({
   icon,
   options,
   value,
+  labelClassName = "",
   classname = "",
   error,
   disabled = false,
@@ -64,7 +66,11 @@ export default function Dropdown({
       ref={rootRef}
       className={`flex w-full flex-col items-start gap-1 ${classname}`}
     >
-      {label && <label className="text-sm font-medium">{label}</label>}
+      {label && (
+        <label className={`text-sm font-medium ${labelClassName}`}>
+          {label}
+        </label>
+      )}
 
       <div className="relative w-full">
         <motion.button

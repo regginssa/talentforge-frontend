@@ -4,3 +4,4 @@ export { default as NavLayout } from "./NavLayout";
 export { default as ServicesCatLayout } from "./ServicesCatLayout";
 export { default as ServicesLayout } from "./ServicesLayout";
 export { default as ServicesSubcatLayout } from "./ServicesSubcatLayout";
+export { default as FreelancerLayout } from "./FreelancerLayout";
