@@ -6,9 +6,11 @@ import Image from "next/image";
 import UserPic1 from "@/public/assets/webps/avatars/resume-import.webp";
 import UserPic2 from "@/public/assets/webps/avatars/man2.webp";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Finish() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -61,6 +63,7 @@ export default function Finish() {
                 type="primary"
                 label="Upgrade"
                 classname="text-sm! font-medium! rounded-full! py-2.5! px-5!"
+                onClick={() => router.push("/nx/plans/membership/change-plan")}
               />
               <p className="text-sm mt-4 text-white/60">
                 Limited time offer. $19.99 after your first month. Cancel
