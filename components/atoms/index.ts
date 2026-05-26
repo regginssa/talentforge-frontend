@@ -25,3 +25,4 @@ export { default as Checkbox } from "./Checkbox";
 export { default as AutoCompleteSelector } from "./AutoCompleteSelector";
 export { default as DatePicker } from "./DatePicker";
 export { default as PhoneInput } from "./PhoneInput";
+export { default as InputOTP } from "./InputOTP";

@@ -5,6 +5,7 @@ import {
   Button,
   DatePicker,
   Input,
+  InputOTP,
   PhoneInput,
   SearchCombobox,
 } from "@/components/atoms";
@@ -33,9 +34,10 @@ export default function Location() {
     country: "United States",
     address: "",
     photo: null,
+    code: "",
   });
   const [errors, setErrors] = useState<any>();
-  const [open, setOpen] = useState(false);
+  const [avatarOpen, setAvatarOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const [photoZoom, setPhotoZoom] = useState(0);
@@ -43,6 +45,8 @@ export default function Location() {
   const [photoOffset, setPhotoOffset] = useState({ x: 0, y: 0 });
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isAttachingPhoto, setIsAttachingPhoto] = useState(false);
+  const [phoneVerifyOpen, setPhoneVerifyOpen] = useState(false);
+  const [sentVerifyCode, setSentVerifyCode] = useState(false);
   const dragStartRef = useRef<{
     x: number;
     y: number;
@@ -175,7 +179,7 @@ export default function Location() {
 
   const handleAttachPhoto = async () => {
     if (!formData.photo) {
-      setOpen(false);
+      setAvatarOpen(false);
       return;
     }
 
@@ -186,7 +190,7 @@ export default function Location() {
       if (!editedPhoto) return;
 
       handlePhotoChange(editedPhoto);
-      setOpen(false);
+      setAvatarOpen(false);
     } catch (error) {
       console.error("Failed to attach edited photo", error);
     } finally {
@@ -326,7 +330,7 @@ export default function Location() {
           <button
             type="button"
             className="cursor-pointer"
-            onClick={() => setOpen(true)}
+            onClick={() => setAvatarOpen(true)}
           >
             {previewUrl ? (
               renderPhotoPreview(100)
@@ -340,7 +344,7 @@ export default function Location() {
             label={formData?.photo ? "Edit photo" : "Upload photo"}
             icon={formData?.photo ? "mdi:pencil-outline" : "mdi:plus"}
             classname="font-medium! text-sm! py-1.5! px-5! rounded-full!"
-            onClick={() => setOpen(true)}
+            onClick={() => setAvatarOpen(true)}
           />
         </div>
 
@@ -460,11 +464,11 @@ export default function Location() {
           type="primary"
           label="Review your profile"
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/location")}
+          onClick={() => setPhoneVerifyOpen(true)}
         />
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={avatarOpen} onOpenChange={setAvatarOpen}>
         <DialogContent className="flex min-w-3xl flex-col overflow-hidden">
           <DialogHeader className="shrink-0 p-4">
             <DialogTitle className="text-3xl">Your photo</DialogTitle>
@@ -588,6 +592,85 @@ export default function Location() {
               loading={isAttachingPhoto}
               onClick={handleAttachPhoto}
             />
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={phoneVerifyOpen} onOpenChange={setPhoneVerifyOpen}>
+        <DialogContent className="flex min-w-3xl flex-col overflow-hidden">
+          <div className="flex flex-col items-center justify-center gap-8 p-6">
+            <h3 className="text-3xl font-medium">
+              {sentVerifyCode
+                ? "Enter your code"
+                : "Please verify your phone number"}
+            </h3>
+            {sentVerifyCode ? (
+              <>
+                <div className="flex items-center justify-center gap-2 text-sm text-slate-600">
+                  <p>We sent a message to +44 7458038425</p>
+                  <button
+                    className="underline cursor-pointer"
+                    onClick={() => setSentVerifyCode(false)}
+                  >
+                    Change phone number
+                  </button>
+                </div>
+
+                <InputOTP
+                  length={5}
+                  value={formData.code}
+                  onChange={(value) =>
+                    setFormData({ ...formData, code: value })
+                  }
+                />
+              </>
+            ) : (
+              <>
+                <p className="text-sm text-slate-600">
+                  We'll text you a code to verify your number
+                </p>
+
+                <PhoneInput
+                  placeholder="Enter number"
+                  defaultCountry="US"
+                  required
+                  classname="w-1/2!"
+                  value={formData.phone}
+                  onChange={(v: Value) =>
+                    setFormData({ ...formData, phone: v })
+                  }
+                />
+                <p className="text-sm text-slate-600 text-center w-2/3 mx-auto">
+                  Messaging rates may apply. We'll use this number for
+                  verification purposes only — we won't share it or use it for
+                  marketing.
+                </p>
+              </>
+            )}
+          </div>
+
+          <DialogFooter className="">
+            <div className="w-full flex flex-col items-center gap-4 justify-center py-2">
+              {sentVerifyCode ? (
+                <>
+                  <Button
+                    type="primary"
+                    label="Verify phone number"
+                    classname="py-2! px-5! text-sm! font-medium! rounded-full!"
+                  />
+                  <button className="text-sm text-slate-800 underline cursor-pointer">
+                    Resend code
+                  </button>
+                </>
+              ) : (
+                <Button
+                  type="primary"
+                  label="Send code"
+                  classname="py-2! px-5! text-sm! font-medium! rounded-full!"
+                  onClick={() => setSentVerifyCode(true)}
+                />
+              )}
+            </div>
           </DialogFooter>
         </DialogContent>
       </Dialog>
