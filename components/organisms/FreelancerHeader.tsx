@@ -116,7 +116,7 @@ export default function FreelancerHeader() {
   };
 
   return (
-    <header className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white">
+    <header className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white mb-10">
       <div className="flex items-center gap-10">
         <WorkLancLogo />
 
@@ -129,7 +129,7 @@ export default function FreelancerHeader() {
           />
           <Link
             href="#"
-            className="rounded-full px-3 py-2 text-sm font-medium text-slate-800 transition-all duration-200 hover:bg-slate-100"
+            className="rounded-full px-3 py-2 text-sm font-medium text-slate-800 transition-all duration-200 hover:text-slate-600 cursor-pointer"
           >
             Messages
           </Link>
