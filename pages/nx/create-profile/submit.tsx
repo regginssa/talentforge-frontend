@@ -38,6 +38,7 @@ import { motion } from "motion/react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useRouter } from "next/router";
 
 const EDITOR_PREVIEW_SIZE = 300;
 
@@ -274,6 +275,7 @@ export default function Submit() {
     offsetX: number;
     offsetY: number;
   } | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!profilePhoto) {
@@ -827,6 +829,7 @@ export default function Submit() {
               type="primary"
               label="Submit profile"
               classname="text-sm! font-medium! rounded-full! mt-6"
+              onClick={() => router.push("/nx/create-profile/finish")}
             />
           </div>
 
