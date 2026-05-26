@@ -5,6 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { OAuthSyncProvider } from "../providers/OAuthSyncProvider";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "../ui/sonner";
+import { TooltipProvider } from "../ui/tooltip";
 
 export default function MainLayout({
   children,
@@ -17,7 +18,7 @@ export default function MainLayout({
         <SessionProvider>
           <OAuthSyncProvider>
             <ThemeProvider attribute="class" forcedTheme="light">
-              {children}
+              <TooltipProvider>{children}</TooltipProvider>
               <Toaster />
             </ThemeProvider>
           </OAuthSyncProvider>

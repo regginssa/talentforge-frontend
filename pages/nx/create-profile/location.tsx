@@ -464,7 +464,7 @@ export default function Location() {
           type="primary"
           label="Review your profile"
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => setPhoneVerifyOpen(true)}
+          onClick={() => router.push("/nx/create-profile/submit")}
         />
       </div>
 
