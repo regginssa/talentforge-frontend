@@ -22,10 +22,10 @@ const SalesMarketingHiringBenefitsFaq = () => {
       {/* Part 2 */}
       <div className="w-full mt-14">
         <p>
-          WorkLanc - Freelancer is the leading online talent solution for
+          Worklanc - Freelancer is the leading online talent solution for
           companies looking to scale their teams and get work done. Key
           advantages for businesses looking to source talent for their sales and
-          marketing projects through WorkLanc - Freelancer include:
+          marketing projects through Worklanc - Freelancer include:
         </p>
         <ul className="list-disc p-4 px-12">
           <li>

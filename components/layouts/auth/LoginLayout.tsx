@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { WorkLancLogo } from "@/components/atoms";
+import { WorklancLogo } from "@/components/atoms";
 
 export function LoginLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +7,7 @@ export function LoginLayout({ children }: { children: React.ReactNode }) {
       {/* Header */}
       <header className="h-20 w-full bg-white">
         <div className="w-[80%] h-full mx-auto flex items-center justify-between">
-          <WorkLancLogo />
+          <WorklancLogo />
         </div>
       </header>
 
@@ -19,7 +19,7 @@ export function LoginLayout({ children }: { children: React.ReactNode }) {
       {/* Footer */}
       <footer className="h-28 w-[80%] rounded-lg mb-8 mx-auto bg-zinc-900 flex items-center justify-center mt-8">
         <p className="text-white text-xs">
-          © 2024 - 2026 WorkLanc® Global LLC •{" "}
+          © 2024 - 2026 Worklanc® Global LLC •{" "}
           <Link href="#" className="hover:underline">
             Privacy Policy
           </Link>{" "}

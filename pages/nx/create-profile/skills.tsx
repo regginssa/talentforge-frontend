@@ -84,10 +84,10 @@ export default function Skills() {
           />
 
           <p className="mt-6 text-xl">
-            “WorkLanc’s algorithm will recommend specific job posts to you based
+            “Worklanc’s algorithm will recommend specific job posts to you based
             on your skills. So choose them carefully to get the best match!”
           </p>
-          <p className="mt-1 text-sm text-slate-800">WorkLanc Pro Tip</p>
+          <p className="mt-1 text-sm text-slate-800">Worklanc Pro Tip</p>
         </div>
       </div>
 

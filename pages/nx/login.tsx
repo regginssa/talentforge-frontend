@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <LoginLayout>
       <div className="w-full max-w-lg border border-slate-200 rounded-lg px-16 py-10 flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-semibold">Log in to WorkLanc</h1>
+        <h1 className="text-2xl font-semibold">Log in to Worklanc</h1>
 
         <form
           className="mt-8 w-full mx-auto flex flex-col gap-6"
@@ -99,7 +99,7 @@ const Login = () => {
           <SocialAuthButtonGroup vertical />
 
           <p className="text-slate-500 mt-12 text-center text-sm">
-            Don't have an WorkLanc account?
+            Don't have an Worklanc account?
           </p>
           <Button
             type="outline"

@@ -18,7 +18,7 @@ export { default as Switch } from "./Switch";
 export { default as TabBar } from "./TabBar";
 export { default as Input } from "./Input";
 export { default as Textarea } from "./Textarea";
-export { default as WorkLancLogo } from "./WorkLancLogo";
+export { default as WorklancLogo } from "./WorklancLogo";
 export { default as SearchCombobox } from "./SearchCombobox";
 export { default as Dropdown } from "./Dropdown";
 export { default as Checkbox } from "./Checkbox";

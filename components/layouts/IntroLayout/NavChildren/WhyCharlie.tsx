@@ -16,7 +16,7 @@ const WhyCharlie = () => {
     },
     {
       title: "Reviews",
-      description: "See what it's like to collaborate on WorkLanc.",
+      description: "See what it's like to collaborate on Worklanc.",
       path: "#",
     },
     {

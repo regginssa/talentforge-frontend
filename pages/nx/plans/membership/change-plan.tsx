@@ -28,16 +28,16 @@ export default function ChangePlan() {
       avatar: UserPic,
       name: "Abel A.",
       memberSince: 2024,
-      text: "“I upgraded to Freelancer Plus in my first month on WorkLanc because I wanted access to insights, like average bid prices and the number of freelancers applying. Those tools make it much easier to know how to position myself competitively.”",
+      text: "“I upgraded to Freelancer Plus in my first month on Worklanc because I wanted access to insights, like average bid prices and the number of freelancers applying. Those tools make it much easier to know how to position myself competitively.”",
     },
   ];
 
   return (
     <FreelancerLayout
       seo={{
-        title: "Change Membership Plan - WorkLanc",
+        title: "Change Membership Plan - Worklanc",
         description: "Membership plans",
-        url: "https://worklanc.com/nx/plans/membership/change-plan",
+        url: "https://Worklanc.com/nx/plans/membership/change-plan",
       }}
     >
       <Link
@@ -126,7 +126,7 @@ export default function ChangePlan() {
                     <p className="text-sm p-2">
                       Receive a reduced service fee, simplify contract
                       management, and build your reputation when you bring new
-                      clients to WorkLanc with Direct Contracts.
+                      clients to Worklanc with Direct Contracts.
                     </p>
                   </TooltipContent>
                 </Tooltip>
@@ -145,7 +145,7 @@ export default function ChangePlan() {
                   </TooltipTrigger>
                   <TooltipContent side="right">
                     <p className="text-sm p-2">
-                      Get unlimited assistance from Uma, WorkLanc's Mindful AI,
+                      Get unlimited assistance from Uma, Worklanc's Mindful AI,
                       built into your everyday workflow to help boost your
                       productivity.
                     </p>

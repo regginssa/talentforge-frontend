@@ -7,11 +7,11 @@ import {
 
 export const SERVICES_SEO: TSEO = {
   title:
-    "Project Catalog - Freelance Services for Your Business | WorkLanc - Freelancer",
+    "Project Catalog - Freelance Services for Your Business | Worklanc - Freelancer",
   description:
     "Explore high-quality freelance services including logo design, web development, content writing, and more. Find the right professional for your business needs.",
   keywords:
-    "freelance services, project catalog, logo design, web development, SEO, WorkLanc",
+    "freelance services, project catalog, logo design, web development, SEO, Worklanc",
   url: "/services",
 };
 

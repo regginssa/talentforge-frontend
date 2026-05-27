@@ -204,10 +204,10 @@ export default function ResumeImport() {
           />
 
           <p className="mt-6 text-xl">
-            “Your WorkLanc profile is how you stand out from the crowd.It’s what
+            “Your Worklanc profile is how you stand out from the crowd.It’s what
             you use to win work, so let’s make it a good one.”
           </p>
-          <p className="mt-1 text-sm text-slate-800">WorkLanc Pro Tip</p>
+          <p className="mt-1 text-sm text-slate-800">Worklanc Pro Tip</p>
         </div>
       </div>
 

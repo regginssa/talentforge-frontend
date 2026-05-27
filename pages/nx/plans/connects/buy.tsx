@@ -7,8 +7,8 @@ export default function Buy() {
   return (
     <FreelancerLayout
       seo={{
-        title: "Buy Connects - WorkLanc",
-        description: "Buy Connects - WorkLanc",
+        title: "Buy Connects - Worklanc",
+        description: "Buy Connects - Worklanc",
         url: "nx/plans/connects/buy",
       }}
     >

@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/logos/logo.png";
 
-interface WorkLancLogoProps {
+interface WorklancLogoProps {
   className?: string;
   href?: string;
 }
 
-const WorkLancLogo: React.FC<WorkLancLogoProps> = ({
+const WorklancLogo: React.FC<WorklancLogoProps> = ({
   className = "",
   href = "/",
 }) => {
@@ -18,7 +18,7 @@ const WorkLancLogo: React.FC<WorkLancLogoProps> = ({
     >
       <Image
         src={Logo}
-        alt="WorkLanc logo"
+        alt="Worklanc logo"
         width={200}
         height={70}
         className="object-contain"
@@ -28,4 +28,4 @@ const WorkLancLogo: React.FC<WorkLancLogoProps> = ({
   );
 };
 
-export default WorkLancLogo;
+export default WorklancLogo;

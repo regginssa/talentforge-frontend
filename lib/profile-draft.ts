@@ -1,6 +1,6 @@
 import { UploadedResume } from "./api/profile";
 
-export const PROFILE_DRAFT_KEY = "worklanc:profile-draft";
+export const PROFILE_DRAFT_KEY = "Worklanc:profile-draft";
 
 export type ProfileDraft = {
   importSource: "resume" | "linkedin" | "manual";

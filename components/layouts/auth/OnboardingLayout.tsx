@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { TSEO } from "@/types/components.types";
-import { SEO, WorkLancLogo } from "@/components/atoms";
+import { SEO, WorklancLogo } from "@/components/atoms";
 
 interface OnboardingLayoutProps {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ const navs = [
   { label: "Feedback", href: "#" },
   { label: "Trust, Safety & Security", href: "#" },
   { label: "Help & Support", href: "#" },
-  { label: "WorkLanc Foundation", href: "#" },
+  { label: "Worklanc Foundation", href: "#" },
   { label: "Terms of Service", href: "#" },
   { label: "Privacy Policy", href: "#" },
   { label: "CA Notice at Collection", href: "#" },
@@ -54,7 +54,7 @@ export const OnboardingLayout: React.FC<OnboardingLayoutProps> = ({
       {seo && <SEO {...seo} />}
       {/* Header */}
       <header className="w-full max-w-[80%] mx-auto p-6 flex items-center justify-between bg-white">
-        <WorkLancLogo />
+        <WorklancLogo />
         <div ref={ref} className="relative">
           <button className="cursor-pointer" onClick={() => setOpen(true)}>
             <Icon
@@ -104,7 +104,9 @@ export const OnboardingLayout: React.FC<OnboardingLayoutProps> = ({
 
       {/* Main */}
       <main
-        className={`flex-1 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto ${!showFooter && "mb-20"}`}
+        className={`flex-1 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto ${
+          !showFooter && "mb-20"
+        }`}
       >
         {children}
       </main>

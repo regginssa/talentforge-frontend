@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { WorkLancLogo } from "../atoms";
+import { WorklancLogo } from "../atoms";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -12,7 +12,7 @@ export default function CreateProfileHeader({
 }) {
   return (
     <header className="w-full max-w-[80%] mx-auto p-6 flex items-center justify-between bg-white">
-      <WorkLancLogo />
+      <WorklancLogo />
       <div className="relative">
         <button className="cursor-pointer" onClick={() => setOpen(true)}>
           <Icon

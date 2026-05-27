@@ -4,18 +4,18 @@ const LegalConnectionMethodsFaq = () => {
       <ul className="list-disc py-4 px-12">
         <li>
           Talent Marketplace: Find and source independent professionals for your
-          projects directly from WorkLanc - Freelancer’s talent marketplace.
+          projects directly from Worklanc - Freelancer’s talent marketplace.
         </li>
         <li>
           Project Catalog: Project Catalog is a new way to quickly get started
-          and expand your capabilities through WorkLanc - Freelancer. From
+          and expand your capabilities through Worklanc - Freelancer. From
           general legal consulting services to contract review and legal
           writing, projects are predefined for you, so you can get to know
           talent through a clearly defined project within their expertise, then
           easily scale up and down as needed.
         </li>
         <li>
-          SpecializedTeams: WorkLanc - Freelancer isn’t just for independent
+          SpecializedTeams: Worklanc - Freelancer isn’t just for independent
           contractors; you can also find independent agencies who can help you
           fill your legal talent gaps with their own professional teams.
         </li>

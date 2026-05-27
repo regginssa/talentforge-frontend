@@ -64,7 +64,7 @@ const SignUp = () => {
 
     if (!formData.terms) {
       newErrors.terms =
-        "Please accept the WorkLanc Terms of Service before continuing";
+        "Please accept the Worklanc Terms of Service before continuing";
     }
 
     setErrors(newErrors);
@@ -129,7 +129,7 @@ const SignUp = () => {
       {currentStep === 0 ? (
         <>
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-bold">Welcome to WorkLanc</h1>
+            <h1 className="text-4xl font-bold">Welcome to Worklanc</h1>
             <p className="mt-4 text-slate-500">Which describes you best?</p>
           </div>
           <div className="flex items-center gap-10">
@@ -240,7 +240,7 @@ const SignUp = () => {
                   <p className="text-left text-slate-600 text-sm">
                     Yes, I understand and agree to the{" "}
                     <Link href="#" className="text-blue-600 underline">
-                      WorkLanc Terms of Service
+                      Worklanc Terms of Service
                     </Link>
                     , including the{" "}
                     <Link href="#" className="text-blue-600 underline">

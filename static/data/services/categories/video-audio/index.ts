@@ -2,11 +2,11 @@ import { TServiceCatLayoutProject } from "@/components/layouts/ServicesCatLayout
 import { TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_VIDEO_AUDIO_SEO: TSEO = {
-  title: "Video & Audio Services | WorkLanc - Freelancer",
+  title: "Video & Audio Services | Worklanc - Freelancer",
   description:
     "Explore high-quality freelance services including logo design, web development, content writing, and more. Find the right professional for your business needs.",
   keywords:
-    "freelance services, project catalog, logo design, web development, SEO, WorkLanc",
+    "freelance services, project catalog, logo design, web development, SEO, Worklanc",
   url: "/services/video-audio",
 };
 

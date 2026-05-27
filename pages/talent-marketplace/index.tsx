@@ -129,7 +129,7 @@ const TalentMarketplace = () => {
     {
       title: "Safe, easy payments",
       descriptions: [
-        "Get an extra level of security with WorkLanc - Freelancer Payment Protection",
+        "Get an extra level of security with Worklanc - Freelancer Payment Protection",
         "Pay as you go billing for milestone and hourly contracts",
         "3-5% marketplace fee depending on billing method",
       ],
@@ -156,10 +156,10 @@ const TalentMarketplace = () => {
     <IntroLayout>
       {/* Enhanced SEO */}
       <SEO
-        title="Talent Marketplace - Post a Job & Hire Top Freelancers | WorkLanc"
-        description="Post a job today and hire quality freelancers tomorrow. Find verified talent in development, marketing, design, writing, and more. Secure payments, verified reviews, and 24/7 support on WorkLanc's talent marketplace."
+        title="Talent Marketplace - Post a Job & Hire Top Freelancers | Worklanc"
+        description="Post a job today and hire quality freelancers tomorrow. Find verified talent in development, marketing, design, writing, and more. Secure payments, verified reviews, and 24/7 support on Worklanc's talent marketplace."
         url="/talent-marketplace"
-        keywords="talent marketplace, post a job, hire freelancers, freelance developers, freelance marketers, freelance designers, find freelancers, quality freelancers, WorkLanc, AI-powered talent marketplace, remote freelancers, freelance job posting, verified freelancers, secure payments, project-based hiring"
+        keywords="talent marketplace, post a job, hire freelancers, freelance developers, freelance marketers, freelance designers, find freelancers, quality freelancers, Worklanc, AI-powered talent marketplace, remote freelancers, freelance job posting, verified freelancers, secure payments, project-based hiring"
       />
 
       {/* Navigation Menu */}
@@ -205,7 +205,7 @@ const TalentMarketplace = () => {
               <div className="w-full mt-8">
                 <button
                   className="bg-blue-600 hover:bg-blue-500 w-[60%] py-3 rounded-lg text-lg text-white font-semibold transition-all duration-150 ease-in-out cursor-pointer"
-                  aria-label="Get started with posting a job on WorkLanc talent marketplace"
+                  aria-label="Get started with posting a job on Worklanc talent marketplace"
                 >
                   Get started
                 </button>
@@ -214,7 +214,7 @@ const TalentMarketplace = () => {
             <div className="w-1/2">
               <Image
                 src={Intro1Image}
-                alt="Talent Marketplace - Post jobs and hire qualified freelancers on WorkLanc"
+                alt="Talent Marketplace - Post jobs and hire qualified freelancers on Worklanc"
                 className="w-full h-auto object-cover"
                 priority
               />
@@ -229,23 +229,23 @@ const TalentMarketplace = () => {
             <p className="text-gray-500 text-sm">TRUSTED BY</p>
             <Image
               src={MicroSoftImage}
-              alt="Microsoft - trusted client using WorkLanc talent marketplace"
+              alt="Microsoft - trusted client using Worklanc talent marketplace"
             />
             <Image
               src={AirbnbImage}
-              alt="Airbnb - trusted client using WorkLanc talent marketplace"
+              alt="Airbnb - trusted client using Worklanc talent marketplace"
             />
             <Image
               src={AutomatticImage}
-              alt="Automattic - trusted client using WorkLanc talent marketplace"
+              alt="Automattic - trusted client using Worklanc talent marketplace"
             />
             <Image
               src={BissellImage}
-              alt="Bissell - trusted client using WorkLanc talent marketplace"
+              alt="Bissell - trusted client using Worklanc talent marketplace"
             />
             <Image
               src={ClouldflareImage}
-              alt="Cloudflare - trusted client using WorkLanc talent marketplace"
+              alt="Cloudflare - trusted client using Worklanc talent marketplace"
               className="w-[150px] h-auto object-cover"
             />
           </aside>
@@ -330,7 +330,7 @@ const TalentMarketplace = () => {
                   <p className="text-base mt-4">
                     Skills represented by talent
                     <br />
-                    on WorkLanc.
+                    on Worklanc.
                   </p>
                 </div>
               </div>
@@ -373,7 +373,7 @@ const TalentMarketplace = () => {
           <div className="w-1/2 rounded-xl overflow-hidden">
             <Image
               src={PostJobImage}
-              alt="Post a job on WorkLanc talent marketplace - easy and secure hiring process"
+              alt="Post a job on Worklanc talent marketplace - easy and secure hiring process"
               className="w-full h-auto object-cover"
             />
           </div>
@@ -401,7 +401,7 @@ const TalentMarketplace = () => {
               />
               <div>
                 <h3 className="text-lg font-semibold">
-                  WorkLanc Payment Protection
+                  Worklanc Payment Protection
                 </h3>
                 <p className="text-lg font-semibold text-gray-600">
                   Gives you security and peace of mind
@@ -426,7 +426,7 @@ const TalentMarketplace = () => {
               You're in good company
             </h2>
             <p className="text-xl mt-4">
-              Millions of companies, big and small, use WorkLanc to get great
+              Millions of companies, big and small, use Worklanc to get great
               work done. Join them today.
             </p>
           </header>

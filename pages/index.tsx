@@ -79,7 +79,7 @@ export default function Home() {
     {
       title: "Work with the best—without breaking the bank",
       description:
-        "WorkLanc makes it affordable to up your work and take advantage of low transaction rates.",
+        "Worklanc makes it affordable to up your work and take advantage of low transaction rates.",
       icon: "solar:shield-star-outline",
     },
   ];
@@ -241,26 +241,26 @@ export default function Home() {
       {/* Enhanced SEO */}
       <Head>
         <title>
-          WorkLanc — Find Top Freelancers & Remote Jobs | Powered by AI
+          Worklanc — Find Top Freelancers & Remote Jobs | Powered by AI
         </title>
         <meta
           name="description"
-          content="Join WorkLanc to connect with skilled AI-powered freelancers or discover high-quality remote job opportunities. From web development to AI services, design, marketing, and more. Start your project today."
+          content="Join Worklanc to connect with skilled AI-powered freelancers or discover high-quality remote job opportunities. From web development to AI services, design, marketing, and more. Start your project today."
         />
         <meta
           name="keywords"
-          content="freelancers, freelance jobs, remote work, AI freelancers, web developers, designers, digital marketing, WorkLanc, hire freelancers, freelance marketplace, independent contractors, project-based work"
+          content="freelancers, freelance jobs, remote work, AI freelancers, web developers, designers, digital marketing, Worklanc, hire freelancers, freelance marketplace, independent contractors, project-based work"
         />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="WorkLanc" />
+        <meta name="author" content="Worklanc" />
         <link rel="canonical" href="https://charlieunicornai-freelancer.com/" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="WorkLanc" />
+        <meta property="og:site_name" content="Worklanc" />
         <meta
           property="og:title"
-          content="WorkLanc — Find Top Freelancers & Remote Jobs"
+          content="Worklanc — Find Top Freelancers & Remote Jobs"
         />
         <meta
           property="og:description"
@@ -281,7 +281,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="WorkLanc — Find Top Freelancers & Remote Jobs"
+          content="Worklanc — Find Top Freelancers & Remote Jobs"
         />
         <meta
           name="twitter:description"
@@ -303,7 +303,7 @@ export default function Home() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "WorkLanc",
+            name: "Worklanc",
             description:
               "AI-powered freelance marketplace connecting businesses with top freelancers",
             url: "https://charlieunicornai-freelancer.com/",
@@ -329,7 +329,7 @@ export default function Home() {
         >
           <Image
             src={SearchSectionBgImage}
-            alt="WorkLanc - Connect clients with top freelancers"
+            alt="Worklanc - Connect clients with top freelancers"
             className="absolute w-full h-full object-cover rounded-lg"
             priority
           />
@@ -466,7 +466,7 @@ export default function Home() {
               ) : (
                 <div className="w-full flex flex-col items-center justify-center mt-6">
                   <p className="text-lg font-semibold text-white text-center mb-4">
-                    Build your freelancing career on WorkLanc, with thousands of
+                    Build your freelancing career on Worklanc, with thousands of
                     jobs posted every week.
                   </p>
                   <Button
@@ -602,7 +602,7 @@ export default function Home() {
 
             {/* Enterprise Description */}
             <p className="text-white font-semibold text-lg mt-6">
-              Access the top 1% of talent on WorkLanc, and a full suite of
+              Access the top 1% of talent on Worklanc, and a full suite of
               hybrid
               <br />
               workforce management tools. This is how innovation works now.
@@ -641,7 +641,7 @@ export default function Home() {
                   aria-hidden="true"
                 />
                 <p className="text-white">
-                  Partner with WorkLanc for end-to-end support
+                  Partner with Worklanc for end-to-end support
                 </p>
               </div>
             </div>
@@ -672,7 +672,7 @@ export default function Home() {
         >
           <Image
             src={ForClientsImage}
-            alt="For Clients - Find talent your way on WorkLanc"
+            alt="For Clients - Find talent your way on Worklanc"
             className="absolute top-0 left-0 w-full h-full object-cover object-top rounded-lg"
           />
 
@@ -778,7 +778,7 @@ export default function Home() {
               <h2 id="why-choose-title" className="text-6xl font-semibold">
                 Why businesses
                 <br />
-                turn to WorkLanc
+                turn to Worklanc
               </h2>
             </header>
 
@@ -857,7 +857,7 @@ export default function Home() {
         >
           <Image
             src={FindWorkImage}
-            alt="For Talent - Find great work opportunities on WorkLanc"
+            alt="For Talent - Find great work opportunities on Worklanc"
             className="w-1/2 h-auto object-cover"
           />
           <div className="w-1/2 p-8">

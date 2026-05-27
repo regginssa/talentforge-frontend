@@ -52,13 +52,13 @@ export default function Languages() {
   return (
     <CreateProfileLayout
       title="Looking good. Next, tell us which languages you speak."
-      description="WorkLanc is global, so clients are often interested to know what languages you speak. English is a must, but do you speak any other languages?"
+      description="Worklanc is global, so clients are often interested to know what languages you speak. English is a must, but do you speak any other languages?"
       currentStep={7}
       totalSteps={10}
       seo={{
         title: "Looking good. Next, tell us which languages you speak.",
         description:
-          "WorkLanc is global, so clients are often interested to know what languages you speak. English is a must, but do you speak any other languages?",
+          "Worklanc is global, so clients are often interested to know what languages you speak. English is a must, but do you speak any other languages?",
         url: "/nx/create-profile/languages",
       }}
     >

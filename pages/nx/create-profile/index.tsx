@@ -133,7 +133,7 @@ function ProfileCard() {
         </div>
 
         <p className="text-2xl text-center">
-          “WorkLanc has enabled me to increase my rates. I know what I'm
+          “Worklanc has enabled me to increase my rates. I know what I'm
           bringing to the table and love the feeling of being able to help a
           variety of clients.”
         </p>

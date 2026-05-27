@@ -17,7 +17,7 @@ const IntroLayout = ({ children }: { children: React.ReactNode }) => {
       children: <FindWork />,
     },
     {
-      label: "Why WorkLanc",
+      label: "Why Worklanc",
       path: "#",
       active: false,
       children: <WhyCharlie />,

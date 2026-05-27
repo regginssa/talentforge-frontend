@@ -2,9 +2,9 @@ import { TServiceCatLayoutProject } from "@/components/layouts/ServicesCatLayout
 import { TProjectCard, TSEO, TServiceCard } from "@/types/components.types";
 
 export const SERVICES_DESIGN_SEO: TSEO = {
-  title: "Online Design Services | WorkLanc - Freelancer",
+  title: "Online Design Services | Worklanc - Freelancer",
   description:
-    "Discover a wide range of online design services including logo design, brand identity, illustration, packaging, digital and print design, photography, building & home design, infographics, and product & game design by WorkLanc.",
+    "Discover a wide range of online design services including logo design, brand identity, illustration, packaging, digital and print design, photography, building & home design, infographics, and product & game design by Worklanc.",
   keywords:
     "logo design, brand identity design, business cards design, stationery design, brand style guides, branding services, brand voice, illustration, vector tracing, portraits, cartoons, fashion design, packaging design, merchandise design, t-shirt design, book design, album cover design, car wraps, social media design, web design, banner ads, AR filters, photoshop editing, local photography, product photography, architecture, interior design, landscape design, presentation design, infographic design, resume design, flyer design, brochure design, poster design, catalog design, invitation design, industrial design, product design, character modeling, game design",
   url: "/services/design",
@@ -1389,11 +1389,11 @@ export const SERVICES_DESIGN_SUBCATEGORIES_DATA = [
       title: "Brand Identity Design",
       subtitle: "You know who you are. Now let's show your customers.",
       seo: {
-        title: "Brand Identity Design Services | WorkLanc - Freelancer",
+        title: "Brand Identity Design Services | Worklanc - Freelancer",
         description:
-          "Explore expert brand identity design services including logo design, business cards, brand style guides, voice & tone, and complete branding solutions. Elevate your brand with WorkLanc.",
+          "Explore expert brand identity design services including logo design, business cards, brand style guides, voice & tone, and complete branding solutions. Elevate your brand with Worklanc.",
         keywords:
-          "brand identity design, logo design, business card design, brand style guides, branding services, brand voice and tone, stationery design, freelancer branding expert, WorkLanc",
+          "brand identity design, logo design, business card design, brand style guides, branding services, brand voice and tone, stationery design, freelancer branding expert, Worklanc",
         url: "/",
         image: "",
       } as TSEO,

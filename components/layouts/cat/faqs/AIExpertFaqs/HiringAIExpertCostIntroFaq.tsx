@@ -21,7 +21,7 @@ const HiringAIExpertCostIntroFaq = () => {
         <p>
           The cost of your project will depend on your scope of work and the
           specific skills you need. If you choose to post a job to hire talent
-          on WorkLanc - Freelancer, you’ll need to consider the following:
+          on Worklanc - Freelancer, you’ll need to consider the following:
         </p>
         <ul className="list-disc p-4 px-12">
           <li>

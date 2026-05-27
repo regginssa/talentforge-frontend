@@ -24,7 +24,7 @@ export default function FreelancerProfil() {
     <FreelancerLayout
       seo={{
         title:
-          "Marco N. - Accouting & Consulting - WorkLanc Freelancer from London, United Kingdom",
+          "Marco N. - Accouting & Consulting - Worklanc Freelancer from London, United Kingdom",
         description: "",
         url: "/freelancers/1",
       }}
@@ -458,7 +458,7 @@ export default function FreelancerProfil() {
             <div className="p-8 space-y-6">
               <h3 className="text-2xl font-medium">Your project catalog</h3>
               <p className="text-sm">
-                Projects are a new way to earn on WorkLanc that helps you do
+                Projects are a new way to earn on Worklanc that helps you do
                 more of the work you love to do. Create project offerings that
                 highlight your strengths and attract more clients.
               </p>
@@ -497,7 +497,7 @@ export default function FreelancerProfil() {
           />
           <div className="text-center text-sm">
             <p className="">
-              Showcase your skills with non-WorkLanc client testimonials
+              Showcase your skills with non-Worklanc client testimonials
             </p>
             <button className="text-blue-600 font-medium hover:underline cursor-pointer mt-4">
               Request a testimonial

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
-import { WorkLancLogo } from "@/components/atoms";
+import { WorklancLogo } from "@/components/atoms";
 
 type UserType = "client" | "talent";
 
@@ -24,7 +24,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({
       {/* Header */}
       <header className="h-20 w-full bg-white">
         <div className="w-[80%] h-full mx-auto flex items-center justify-between">
-          <WorkLancLogo />
+          <WorklancLogo />
 
           {!hiddenToggle && userType && toggleUserType && (
             <div className="flex items-center gap-4">

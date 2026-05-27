@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { WorkLancLogo } from "../atoms";
+import { WorklancLogo } from "../atoms";
 
 type NavLink = {
   label: string;
@@ -118,7 +118,7 @@ export default function FreelancerHeader() {
   return (
     <header className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white mb-10">
       <div className="flex items-center gap-4">
-        <WorkLancLogo />
+        <WorklancLogo />
 
         <nav className="flex items-center gap-2">
           <HoverNavMenu label="Find work" sections={navs.findWorkNavs} />

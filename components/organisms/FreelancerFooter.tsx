@@ -8,7 +8,7 @@ export default function FreelancerFooter() {
     { label: "Feedback", href: "#" },
     { label: "Trust, Safety & Security", href: "#" },
     { label: "Help & Support", href: "#" },
-    { label: "WorkLanc Foundation", href: "#" },
+    { label: "Worklanc Foundation", href: "#" },
     { label: "Terms of Service", href: "#" },
     { label: "Privacy Policy", href: "#" },
     { label: "CA Notice at Collection", href: "#" },
@@ -80,7 +80,7 @@ export default function FreelancerFooter() {
         </div>
       </div>
 
-      <p className="mt-4 text-xs">© 2024 - 2026 WorkLanc® Global LLC</p>
+      <p className="mt-4 text-xs">© 2024 - 2026 Worklanc® Global LLC</p>
     </footer>
   );
 }

@@ -65,7 +65,7 @@ const PleaseVerify = () => {
                   <div>
                     <p>Search for the email</p>
                     <p className="text-slate-700 mt-1">
-                      We'll send the email from "WorkLanc", so you can quickly
+                      We'll send the email from "Worklanc", so you can quickly
                       search for it. If it isn't in your inbox, check your
                       folders. If a spam filter or email rule moved the email,
                       it might be in Spam, Junk, Trash, Deleted Items, or
