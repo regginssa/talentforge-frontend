@@ -1,6 +1,12 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { WorklancLogo } from "../atoms";
+import { IconButton, WorklancLogo } from "../atoms";
+import { HeaderSearch } from "../molecules";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import UserPic from "@/public/assets/webps/avatars/man2.webp";
+import Image from "next/image";
+import { Switch } from "../ui/switch";
 
 type NavLink = {
   label: string;
@@ -65,6 +71,22 @@ function HoverNavMenu({ label, sections }: HoverNavMenuProps) {
 }
 
 export default function FreelancerHeader() {
+  const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   const navs = {
     findWorkNavs: [
       {
@@ -115,8 +137,53 @@ export default function FreelancerHeader() {
     ],
   };
 
+  const profileNavs = [
+    {
+      label: "Your profile",
+      icon: "material-symbols-light:account-circle-outline",
+      href: "#",
+    },
+    {
+      label: "Stats and trends",
+      icon: "material-symbols-light:trending-up",
+      href: "#",
+    },
+    {
+      label: "Account health",
+      icon: "material-symbols-light:av-timer",
+      href: "#",
+    },
+
+    {
+      label: "Membership plan",
+      icon: "material-symbols-light:id-card-outline",
+      href: "#",
+    },
+
+    {
+      label: "Connects",
+      icon: "material-symbols-light:av-timer",
+      href: "#",
+    },
+
+    {
+      label: "Account settings",
+      icon: "material-symbols-light:settings-outline",
+      href: "#",
+    },
+
+    {
+      label: "Log out",
+      icon: "material-symbols-light:logout",
+      href: "#",
+    },
+  ];
+
   return (
-    <header className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white mb-10">
+    <header
+      ref={headerRef}
+      className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white mb-10"
+    >
       <div className="flex items-center gap-4">
         <WorklancLogo />
 
@@ -134,6 +201,113 @@ export default function FreelancerHeader() {
             Messages
           </Link>
         </nav>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <HeaderSearch />
+        <div className="flex items-center">
+          <IconButton
+            variant="text"
+            icon="mdi:question-mark"
+            onClick={() => {}}
+          />
+          <IconButton
+            variant="text"
+            icon="mdi:bell-outline"
+            onClick={() => {}}
+          />
+        </div>
+
+        <div className="relative">
+          <button
+            type="button"
+            className="cursor-pointer"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            <Image src={UserPic} alt="User" width={32} height={32} />
+
+            <AnimatePresence>
+              {open && (
+                <motion.ul
+                  initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute bg-white top-full w-[280px] right-0 max-h-[400px] overflow-y-auto text-sm z-40 mt-1 shadow-md py-1 rounded-lg border border-slate-200"
+                >
+                  <div className="py-1 border-b border-slate-200">
+                    <div className="flex items-center gap-2 p-4 hover:bg-slate-100 cursor-pointer">
+                      <Image
+                        src={UserPic}
+                        alt="User"
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                      <div className="flex flex-col items-start">
+                        <h3 className="text-sm font-medium">Jhon Smthi</h3>
+                        <p className="text-xs text-slate-600">Freelancer</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between w-full px-4 py-2">
+                      <span>Online for messages</span>
+                      <Switch />
+                    </div>
+                  </div>
+
+                  <ul className="py-1 border-b border-slate-200">
+                    {profileNavs.slice(0, 2).map((nav, index) => (
+                      <li
+                        key={nav.label}
+                        className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
+                      >
+                        <Link
+                          href={nav.href}
+                          className="flex items-center gap-4"
+                        >
+                          <Icon icon={nav.icon} className="w-5 h-5" />
+                          <span className="text-sm">{nav.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="py-1 border-b border-slate-200">
+                    {profileNavs.slice(2, 5).map((nav, index) => (
+                      <li
+                        key={nav.label}
+                        className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
+                      >
+                        <Link
+                          href={nav.href}
+                          className="flex items-center gap-4"
+                        >
+                          {" "}
+                          <Icon icon={nav.icon} className="w-5 h-5" />
+                          <span className="text-sm">{nav.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="py-1 border-b border-slate-200">
+                    <li
+                      key={profileNavs[6].label}
+                      className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
+                    >
+                      <Link
+                        href={profileNavs[6].href}
+                        className="flex items-center gap-4"
+                      >
+                        <Icon icon={profileNavs[6].icon} className="w-5 h-5" />
+                        <span className="text-sm">{profileNavs[6].label}</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </motion.ul>
+              )}
+            </AnimatePresence>
+          </button>
+        </div>
       </div>
     </header>
   );

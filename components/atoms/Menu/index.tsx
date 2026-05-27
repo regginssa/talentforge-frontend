@@ -77,7 +77,9 @@ const Menu: React.FC<MenuProps> = ({
         <ul
           className={`
             absolute flex flex-col items-start mt-3 py-2 z-50 border rounded-lg shadow-lg
-            overflow-y-auto bg-white border-gray-300 ${type === "horizontal" ? "flex flex-row" : "flex flex-col"}
+            overflow-y-auto bg-white border-gray-300 ${
+              type === "horizontal" ? "flex flex-row" : "flex flex-col"
+            }
           `}
           role="listbox"
         >
