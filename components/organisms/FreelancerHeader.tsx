@@ -117,7 +117,7 @@ export default function FreelancerHeader() {
 
   return (
     <header className="w-full max-w-[90%] mx-auto py-2 flex items-center justify-between bg-white mb-10">
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-4">
         <WorkLancLogo />
 
         <nav className="flex items-center gap-2">
