@@ -16,3 +16,5 @@ export { default as EmploymentDialog } from "./dialogs/EmploymentDialog";
 export { default as EducationDialog } from "./dialogs/EducationDialog";
 export { default as TitleDialog } from "./dialogs/TitleDialog";
 export { default as HourlyRateDialog } from "./dialogs/HourlyRateDialog";
+export { default as ProfileOverviewDialog } from "./dialogs/ProfileOverviewDialog";
+export { default as ShareProfileDialog } from "./dialogs/ShareProfileDialog";

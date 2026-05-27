@@ -10,6 +10,8 @@ import {
   EmploymentDialog,
   FreelancerPlusAlert,
   HourlyRateDialog,
+  ProfileOverviewDialog,
+  ShareProfileDialog,
   TitleDialog,
 } from "@/components/molecules";
 import { useState } from "react";
@@ -26,8 +28,10 @@ import { Education, Employment } from "@/types/user";
 
 export default function FreelancerProfil() {
   const [portfolioTabIdx, setPortfolioTabIdx] = useState(0);
+  const [shareOpen, setShareOpen] = useState(false);
   const [titleOpen, setTitleOpen] = useState(false);
   const [rateOpen, setRateOpen] = useState(false);
+  const [overviewOpen, setOverviewOpen] = useState(false);
   const [employmentOpen, setEmploymentOpen] = useState(false);
   const [educationOpen, setEducationOpen] = useState(false);
   const [employments, setEmployments] = useState<Employment[]>([]);
@@ -105,6 +109,7 @@ export default function FreelancerProfil() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               className="text-blue-600 flex items-center gap-2 hover:text-blue-500 transition-all duration-200 cursor-pointer"
+              onClick={() => setShareOpen(true)}
             >
               <span className="text-sm font-medium">Share</span>
               <Icon icon="mdi:ios-share" className="w-5 h-5" />
@@ -352,7 +357,7 @@ export default function FreelancerProfil() {
                   variant="outline"
                   icon="mdi:pencil-outline"
                   className="p-1!"
-                  onClick={() => {}}
+                  onClick={() => setOverviewOpen(true)}
                 />
               </div>
             </div>
@@ -620,6 +625,12 @@ export default function FreelancerProfil() {
         </div>
       </div>
 
+      <ShareProfileDialog
+        url="https://www.worklanc.com/freelancers/1"
+        open={shareOpen}
+        onClose={() => setShareOpen(false)}
+      />
+
       <EmploymentDialog
         open={employmentOpen}
         onClose={() => setEmploymentOpen(false)}
@@ -649,6 +660,14 @@ export default function FreelancerProfil() {
         onClose={() => setRateOpen(false)}
         rate={0}
         onChangeRate={(rate: number) => {}}
+        onSave={() => {}}
+      />
+
+      <ProfileOverviewDialog
+        open={overviewOpen}
+        onClose={() => setOverviewOpen(false)}
+        overview=""
+        onChangeOverview={(overview: string) => {}}
         onSave={() => {}}
       />
     </FreelancerLayout>
