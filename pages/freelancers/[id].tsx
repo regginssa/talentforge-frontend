@@ -12,6 +12,7 @@ import {
   HourlyRateDialog,
   ProfileOverviewDialog,
   ShareProfileDialog,
+  TestimonialDialog,
   TitleDialog,
 } from "@/components/molecules";
 import { useState } from "react";
@@ -32,6 +33,7 @@ export default function FreelancerProfil() {
   const [titleOpen, setTitleOpen] = useState(false);
   const [rateOpen, setRateOpen] = useState(false);
   const [overviewOpen, setOverviewOpen] = useState(false);
+  const [testimonialOpen, setTestimonialOpen] = useState(false);
   const [employmentOpen, setEmploymentOpen] = useState(false);
   const [educationOpen, setEducationOpen] = useState(false);
   const [employments, setEmployments] = useState<Employment[]>([]);
@@ -504,7 +506,7 @@ export default function FreelancerProfil() {
             variant="outline"
             icon="mdi:plus"
             className="p-1!"
-            onClick={() => {}}
+            onClick={() => setTestimonialOpen(true)}
           />
         </div>
 
@@ -518,7 +520,10 @@ export default function FreelancerProfil() {
             <p className="">
               Showcase your skills with non-Worklanc client testimonials
             </p>
-            <button className="text-blue-600 font-medium hover:underline cursor-pointer mt-4">
+            <button
+              className="text-blue-600 font-medium hover:underline cursor-pointer mt-4"
+              onClick={() => setTestimonialOpen(true)}
+            >
               Request a testimonial
             </button>
           </div>
@@ -669,6 +674,12 @@ export default function FreelancerProfil() {
         overview=""
         onChangeOverview={(overview: string) => {}}
         onSave={() => {}}
+      />
+
+      <TestimonialDialog
+        open={testimonialOpen}
+        onClose={() => setTestimonialOpen(false)}
+        onRequest={() => {}}
       />
     </FreelancerLayout>
   );
