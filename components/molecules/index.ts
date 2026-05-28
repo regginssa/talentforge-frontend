@@ -21,3 +21,4 @@ export { default as ShareProfileDialog } from "./dialogs/ShareProfileDialog";
 export { default as TestimonialDialog } from "./dialogs/TestimonialDialog";
 export { default as CertificationDialog } from "./dialogs/CertificationDialog";
 export { default as OtherExperienceDialog } from "./dialogs/OtherExperienceDialog";
+export { default as CheckBoxGroup } from "./CheckBoxGroup";
