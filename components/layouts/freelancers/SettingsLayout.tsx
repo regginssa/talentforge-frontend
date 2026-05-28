@@ -16,9 +16,12 @@ export default function FreelancerSettingsLayout({
     { label: "My Profile", href: "/freelancers/settings/profile" },
     { label: "Profile Settings", href: "#" },
     { label: "Withdrawals", href: "#" },
-    { label: "My Teams", href: "#" },
+    { label: "My Teams", href: "/freelancers/settings/teams" },
     { label: "Connected Services", href: "#" },
-    { label: "Password & Security", href: "#" },
+    {
+      label: "Password & Security",
+      href: "/freelancers/settings/password-and-security",
+    },
     { label: "Identity Verification", href: "#" },
     { label: "Notification Settings", href: "#" },
   ];

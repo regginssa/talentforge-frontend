@@ -28,7 +28,7 @@ function HoverNavMenu({ label, sections }: HoverNavMenuProps) {
     <div className="group relative">
       <button
         type="button"
-        className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-slate-800 transition-all duration-200 hover:text-slate-600 cursor-pointer"
+        className="flex items-center gap-1 rounded-full px-1 py-2 text-sm font-medium text-slate-800 transition-all duration-200 hover:text-slate-600 cursor-pointer"
       >
         <span>{label}</span>
         <Icon
