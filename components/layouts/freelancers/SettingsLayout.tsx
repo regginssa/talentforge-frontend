@@ -28,7 +28,10 @@ export default function FreelancerSettingsLayout({
       label: "Password & Security",
       href: "/freelancers/settings/password-and-security",
     },
-    { label: "Identity Verification", href: "#" },
+    {
+      label: "Identity Verification",
+      href: "/freelancers/settings/identity-verification",
+    },
     {
       label: "Notification Settings",
       href: "/freelancers/settings/notifications",
