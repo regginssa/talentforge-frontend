@@ -169,7 +169,7 @@ export default function FreelancerHeader() {
     {
       label: "Account settings",
       icon: "material-symbols-light:settings-outline",
-      href: "#",
+      href: "/freelancers/settings/contact-info",
     },
 
     {
@@ -233,7 +233,7 @@ export default function FreelancerHeader() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -8, scale: 0.98 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute bg-white top-full w-[280px] right-0 max-h-[400px] overflow-y-auto text-sm z-40 mt-1 shadow-md py-1 rounded-lg border border-slate-200"
+                  className="absolute bg-white top-full w-[280px] right-0 max-h-[420px] overflow-y-auto text-sm z-40 mt-1 shadow-md py-1 rounded-lg border border-slate-200"
                 >
                   <div className="py-1 border-b border-slate-200">
                     <div className="flex items-center gap-2 p-4 hover:bg-slate-100 cursor-pointer">
@@ -272,7 +272,7 @@ export default function FreelancerHeader() {
                   </ul>
 
                   <ul className="py-1 border-b border-slate-200">
-                    {profileNavs.slice(2, 5).map((nav, index) => (
+                    {profileNavs.slice(2, 6).map((nav, index) => (
                       <li
                         key={nav.label}
                         className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"

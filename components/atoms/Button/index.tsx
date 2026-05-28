@@ -65,7 +65,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <motion.button
         whileTap={{ scale: 0.95 }}
-        className={`${buttonClasses.primary} ${buttonClasses.size} ${classname} rounded-xl transition-all duration-150 ease-in-out flex items-center justify-center gap-2`}
+        className={`${buttonClasses.primary} ${buttonClasses.size} ${classname} rounded-xl transition-colors duration-150 ease-in-out flex items-center justify-center gap-2`}
         disabled={loading || disabled}
         onClick={onClick}
         type={isSubmit ? "submit" : "button"}
@@ -91,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <motion.button
         whileTap={{ scale: 0.95 }}
-        className={`border-2 border-blue-600 text-blue-700 ${classname} hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 font-semibold rounded-xl transition-all duration-300 ease-in-out flex items-center gap-2 justify-center ${
+        className={`border-2 border-blue-600 text-blue-700 ${classname} hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 font-semibold rounded-xl transition-colors duration-300 ease-in-out flex items-center gap-2 justify-center ${
           loading || disabled
             ? "opacity-50 cursor-not-allowed"
             : "cursor-pointer"
