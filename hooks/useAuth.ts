@@ -38,14 +38,14 @@ export const useOnboardingGuard = () => {
 
     const talent = user.accounts.find((account) => account.type === "talent");
 
-    if (!talent) {
-      router.replace(SIGNUP_PATH);
-      return;
-    }
+    // if (!talent) {
+    //   router.replace(SIGNUP_PATH);
+    //   return;
+    // }
 
-    if (talent.onboardingCompleted) {
-      router.replace(DASHBOARD_PATH);
-    }
+    // if (talent.onboardingCompleted) {
+    //   router.replace(DASHBOARD_PATH);
+    // }
   }, [status, user, router]);
 
   return status;
