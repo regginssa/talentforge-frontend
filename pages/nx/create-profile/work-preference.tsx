@@ -1,11 +1,12 @@
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { WorkPreferenceType } from "@/types/user";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const PC = require("@/public/assets/svgs/icons/other/pc_control.svg");
 const Calc = require("@/public/assets/svgs/icons/other/calc_control.svg");
@@ -30,6 +31,14 @@ const radios = [
 export default function WorkPerformance() {
   const [perf, setPerf] = useState<WorkPreferenceType>("find_jobs");
   const router = useRouter();
+  const { profile, saveStep, skipStep, saving, skipping } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.workPreference) setPerf(profile.workPreference);
+  }, [profile]);
 
   return (
     <CreateProfileLayout
@@ -87,15 +96,25 @@ export default function WorkPerformance() {
         </motion.button>
 
         <div className="flex items-center gap-4">
-          <button className="py-2 px-4 text-sm font-medium hover:underline">
+          <button
+            disabled={skipping}
+            className="py-2 px-4 text-sm font-medium hover:underline disabled:opacity-50"
+            onClick={() => skipStep("/nx/create-profile/resume-import")}
+          >
             Skip for now
           </button>
 
           <Button
             type="primary"
             label="Next, create a profile"
+            loading={saving}
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/resume-import")}
+            onClick={() =>
+              saveStep(
+                { workPreference: perf },
+                "/nx/create-profile/resume-import"
+              )
+            }
           />
         </div>
       </div>

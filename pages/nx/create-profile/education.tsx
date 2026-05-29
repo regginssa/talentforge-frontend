@@ -1,6 +1,7 @@
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 import { Button, Dropdown, Input, Textarea } from "@/components/atoms";
 import {
   Carousel,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Education } from "@/types/user";
 import {
   Dialog,
@@ -38,6 +39,40 @@ export default function ProfileEducation() {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
+  const { profile, saveStep, skipStep, saving, skipping } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.education?.length) {
+      setEducations(
+        profile.education.map((item: any) => ({
+          school: item.school || "",
+          degree: item.degree || "",
+          fieldOfStudy: item.fieldOfStudy || "",
+          startedAt: item.startedYear ?? null,
+          endAt: item.endYear ?? null,
+          description: item.description || "",
+        }))
+      );
+    }
+  }, [profile]);
+
+  const handleNext = () =>
+    saveStep(
+      {
+        education: educations.map((education) => ({
+          school: education.school,
+          degree: education.degree,
+          fieldOfStudy: education.fieldOfStudy,
+          startedYear: education.startedAt,
+          endYear: education.endAt,
+          description: education.description,
+        })),
+      },
+      "/nx/create-profile/languages"
+    );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -180,15 +215,20 @@ export default function ProfileEducation() {
 
         <div className="flex items-center gap-4">
           {educations.length === 0 && (
-            <button className="py-2 px-4 text-sm font-medium hover:underline">
+            <button
+              disabled={skipping}
+              className="py-2 px-4 text-sm font-medium hover:underline disabled:opacity-50"
+              onClick={() => skipStep("/nx/create-profile/languages")}
+            >
               Skip for now
             </button>
           )}
           <Button
             type="primary"
             label="Next, add languages"
+            loading={saving}
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/languages")}
+            onClick={handleNext}
           />
         </div>
       </div>

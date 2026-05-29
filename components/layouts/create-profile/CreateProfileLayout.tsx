@@ -1,9 +1,10 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { TSEO } from "@/types/components.types";
 import { SEO } from "@/components/atoms";
 import { Progress } from "@/components/ui/progress";
 import { CreateProfileHeader } from "@/components/organisms";
+import { useOnboardingGuard } from "@/hooks/useAuth";
 
 interface CreateProfileLayoutProps {
   children: React.ReactNode;
@@ -26,21 +27,11 @@ export const CreateProfileLayout: React.FC<CreateProfileLayoutProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // Require auth + a talent account; bounce completed users to the dashboard.
+  useOnboardingGuard();
 
   return (
-    <div ref={ref} className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {seo && <SEO {...seo} />}
       {/* Header */}
       <CreateProfileHeader open={open} setOpen={setOpen} />

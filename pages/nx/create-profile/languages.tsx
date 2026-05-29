@@ -1,11 +1,12 @@
 import { Button, Dropdown, SearchCombobox } from "@/components/atoms";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { LanguageLevel } from "@/types/user";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { languages as countryLanguages } from "country-data-list";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import router from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const languageLevels = [
   { label: "Basic", value: "basic" },
@@ -26,6 +27,36 @@ const languageOptions = countryLanguages.all
 export default function Languages() {
   const [englishLevel, setEnglishLevel] = useState<LanguageLevel | "">("");
   const [languages, setLanguages] = useState<LanguageDraft[]>([]);
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    const saved = profile.languages ?? [];
+    const english = saved.find((language) => language.name === "English");
+    if (english) setEnglishLevel(english.level);
+    setLanguages(
+      saved
+        .filter((language) => language.name !== "English")
+        .map((language) => ({ name: language.name, level: language.level }))
+    );
+  }, [profile]);
+
+  const handleNext = () => {
+    const payload = [
+      ...(englishLevel
+        ? [{ name: "English", level: englishLevel as LanguageLevel }]
+        : []),
+      ...languages
+        .filter((language) => language.name && language.level)
+        .map((language) => ({
+          name: language.name,
+          level: language.level as LanguageLevel,
+        })),
+    ];
+    return saveStep({ languages: payload }, "/nx/create-profile/overview");
+  };
 
   const handleAddLanguage = () => {
     setLanguages((prev) => [...prev, { name: "", level: "" }]);
@@ -146,8 +177,9 @@ export default function Languages() {
         <Button
           type="primary"
           label="Next, write an overview"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/overview")}
+          onClick={handleNext}
         />
       </div>
     </CreateProfileLayout>

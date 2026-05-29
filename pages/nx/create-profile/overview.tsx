@@ -1,16 +1,25 @@
 import { Button, Textarea } from "@/components/atoms";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import UserPic from "@/public/assets/webps/avatars/man2.webp";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import TOP_RATED_PLUS from "@/public/assets/svgs/icons/badges/top_rated_plus.svg";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 export default function Overview() {
   const [overview, setOverview] = useState("");
   const router = useRouter();
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.overview) setOverview(profile.overview);
+  }, [profile]);
 
   return (
     <CreateProfileLayout
@@ -104,8 +113,11 @@ export default function Overview() {
         <Button
           type="primary"
           label="Next, set your rate"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/rate")}
+          onClick={() =>
+            saveStep({ overview }, "/nx/create-profile/rate")
+          }
         />
       </div>
     </CreateProfileLayout>

@@ -9,6 +9,8 @@ import SignupLayout from "@/components/layouts/auth/SignupLayout";
 import AuthAPI, { setAuthToken } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
+import { useAppDispatch } from "@/store/hooks";
+import { setUser } from "@/store/slices/userSlice";
 
 type TUserType = "client" | "talent";
 
@@ -27,6 +29,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState<any>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -99,27 +102,23 @@ const SignUp = () => {
     setLoading(true);
 
     const data = await AuthAPI.signup({
-      ...formData,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
       accountType: userType,
       countryCode:
         countries.all.find((c) => c.name === formData.country)?.alpha2 || "US",
-      createdAt: new Date(),
-      appleId: null,
-      googleId: null,
-      signinOption: "email",
-    } as any);
+      marketingOptIn: formData.alert,
+    });
 
     if (!data?.token) return setLoading(false);
     setAuthToken(data.token);
-    toast.success(`Welcome Jack`, { position: "top-center" });
+    dispatch(setUser(data.user));
+    toast.success(`Welcome ${formData.firstName}`, { position: "top-center" });
     router.push("/nx/signup/please-verify");
     setLoading(false);
   };
-
-  console.log(
-    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET
-  );
 
   return (
     <SignupLayout

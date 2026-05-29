@@ -2,7 +2,8 @@ import { Button, Input } from "@/components/atoms";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 export default function Rate() {
   const [formData, setFormData] = useState({
@@ -12,10 +13,26 @@ export default function Rate() {
   });
 
   const router = useRouter();
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.hourlyRate != null) {
+      setFormData((prev) => ({ ...prev, rate: String(profile.hourlyRate) }));
+    }
+  }, [profile]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleNext = () =>
+    saveStep(
+      { hourlyRate: formData.rate ? Number(formData.rate) : null },
+      "/nx/create-profile/location"
+    );
   return (
     <CreateProfileLayout
       title="Now, let’s set your hourly rate."
@@ -110,8 +127,9 @@ export default function Rate() {
         <Button
           type="primary"
           label="Next, add your photo and location"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/location")}
+          onClick={handleNext}
         />
       </div>
     </CreateProfileLayout>

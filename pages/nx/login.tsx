@@ -5,6 +5,8 @@ import AuthAPI, { setAuthToken } from "@/lib/api/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useAppDispatch } from "@/store/hooks";
+import { setUser } from "@/store/slices/userSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,7 @@ const Login = () => {
   const [errors, setErrors] = useState<any>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,8 +49,10 @@ const Login = () => {
       setErrors({ ...errors, password: "Password is incorrect" });
     }
     if (!data?.token) return setLoading(false);
-    setAuthToken(data?.token);
+    setAuthToken(data.token);
+    dispatch(setUser(data.user));
     toast.success("Welcome back", { position: "top-center" });
+    router.push(data.redirectTo || "/dashboard");
     setLoading(false);
   };
 

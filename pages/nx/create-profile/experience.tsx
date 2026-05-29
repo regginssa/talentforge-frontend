@@ -2,10 +2,11 @@ import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateP
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExperienceType } from "@/types/user";
 import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const Search = require("@/public/assets/svgs/icons/other/search.svg");
 const Pencil = require("@/public/assets/svgs/icons/other/pencil_in_hand.svg");
@@ -20,6 +21,14 @@ const radios = [
 export default function Experience() {
   const [exp, setExp] = useState<ExperienceType>("junior");
   const router = useRouter();
+  const { profile, saveStep, skipStep, saving, skipping } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.experienceLevel) setExp(profile.experienceLevel);
+  }, [profile]);
 
   return (
     <CreateProfileLayout
@@ -77,15 +86,25 @@ export default function Experience() {
         </motion.button>
 
         <div className="flex items-center gap-4">
-          <button className="py-2 px-4 text-sm font-medium hover:underline">
+          <button
+            disabled={skipping}
+            className="py-2 px-4 text-sm font-medium hover:underline disabled:opacity-50"
+            onClick={() => skipStep("/nx/create-profile/goal")}
+          >
             Skip for now
           </button>
 
           <Button
             type="primary"
             label="Next"
+            loading={saving}
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/goal")}
+            onClick={() =>
+              saveStep(
+                { experienceLevel: exp },
+                "/nx/create-profile/goal"
+              )
+            }
           />
         </div>
       </div>

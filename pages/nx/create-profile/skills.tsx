@@ -2,18 +2,34 @@ import { AutoCompleteSelector, Button } from "@/components/atoms";
 import { AutoCompleteOption } from "@/components/atoms/AutoCompleteSelector";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { MOCK_SKILLS, type MockSkill } from "@/static/data/mock-skills";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import UserImage from "@/public/assets/webps/avatars/resume-import.webp";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 export default function Skills() {
   const [search, setSearch] = useState("");
   const [selectedSkills, setSelectedSkills] = useState<MockSkill[]>([]);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.skills?.length) {
+      setSelectedSkills(
+        profile.skills.map((skill) => ({
+          label: skill.name,
+          value: skill.name,
+        }))
+      );
+    }
+  }, [profile]);
 
   const handleSelect = (skill: MockSkill) => {
     if (selectedSkills.length >= 15) {
@@ -103,8 +119,14 @@ export default function Skills() {
         <Button
           type="primary"
           label="Next, your profile title"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/title")}
+          onClick={() =>
+            saveStep(
+              { skills: selectedSkills.map((skill) => ({ name: skill.label })) },
+              "/nx/create-profile/title"
+            )
+          }
         />
       </div>
     </CreateProfileLayout>

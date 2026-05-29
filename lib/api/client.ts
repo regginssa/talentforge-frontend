@@ -29,7 +29,7 @@ export async function request<T>(
   if (res.status === 401) {
     removeAuthToken();
     toast.error("Session expired");
-    window.location.href = "/auth/login";
+    window.location.href = "/nx/login";
     return null;
   }
 
@@ -62,7 +62,7 @@ export async function uploadRequest(
   if (res.status === 401) {
     removeAuthToken();
     toast.error("Session expired");
-    window.location.href = "/auth/login";
+    window.location.href = "/nx/login";
     return null;
   }
 

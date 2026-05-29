@@ -1,4 +1,5 @@
 import { request } from "./client";
+import type { OAuthProfile } from "@/types/oauth";
 
 const AuthAPI = {
   signup: async (body: any) =>
@@ -13,6 +14,22 @@ const AuthAPI = {
       body: JSON.stringify(body),
     }),
 
+  // Social sign-in / sign-up. Posts the decoded provider profile and gets back
+  // { token, user, redirectTo, isNewUser } — redirectTo is the next incomplete
+  // onboarding step, or /dashboard when onboarding is already done.
+  oauth: async (body: OAuthProfile) =>
+    await request("/auth/oauth", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  me: async () => await request("/auth/me", { method: "GET" }),
+
+  updateMe: async (body: any) =>
+    await request("/auth/me", {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    }),
 };
 
 export const TOKEN_KEY = "Authenticate-Token";

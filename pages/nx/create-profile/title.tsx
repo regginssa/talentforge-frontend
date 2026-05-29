@@ -1,13 +1,22 @@
 import { Button, Input } from "@/components/atoms";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 export default function Title() {
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState<string | null>(null);
   const router = useRouter();
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.title) setTitle(profile.title);
+  }, [profile]);
 
   const validateTitle = () => {
     if (title.trim() === "") {
@@ -60,10 +69,11 @@ export default function Title() {
         <Button
           type="primary"
           label="Next, add your experience"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
           onClick={() => {
-            if (titleError) return;
-            router.push("/nx/create-profile/employment");
+            if (titleError || title.trim().length < 4) return;
+            saveStep({ title: title.trim() }, "/nx/create-profile/employment");
           }}
         />
       </div>

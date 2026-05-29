@@ -25,8 +25,22 @@ import {
 import { Icon } from "@iconify/react";
 import { Slider } from "@/components/ui/slider";
 import { Move } from "lucide-react";
+import AuthAPI from "@/lib/api/auth";
+import TalentAPI from "@/lib/api/talent";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setUser } from "@/store/slices/userSlice";
+import { useOnboarding } from "@/hooks/useOnboarding";
+import { useQueryClient } from "@tanstack/react-query";
 
 const EDITOR_PREVIEW_SIZE = 300;
+
+const fileToDataUrl = (file: File) =>
+  new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 
 export default function Location() {
   const [formData, setFormData] = useState<any>({
@@ -40,6 +54,14 @@ export default function Location() {
   const [avatarOpen, setAvatarOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
+  const { profile } = useOnboarding();
+  const queryClient = useQueryClient();
+  const [savingNext, setSavingNext] = useState(false);
+  const [savedPhotoUrl, setSavedPhotoUrl] = useState<string | null>(null);
+  const seeded = useRef(false);
+  const photoSeeded = useRef(false);
   const [photoZoom, setPhotoZoom] = useState(0);
   const [photoRotation, setPhotoRotation] = useState(0);
   const [photoOffset, setPhotoOffset] = useState({ x: 0, y: 0 });
@@ -56,6 +78,84 @@ export default function Location() {
 
   const handleInputChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  useEffect(() => {
+    if (!user || seeded.current) return;
+    seeded.current = true;
+    const countryName = user.countryCode
+      ? countries.all.find((c) => c.alpha2 === user.countryCode)?.name
+      : undefined;
+    setFormData((prev: any) => ({
+      ...prev,
+      birthday: user.dateOfBirth ? new Date(user.dateOfBirth) : prev.birthday,
+      country: countryName || prev.country,
+      address: user.streetAddress || "",
+      aptSuite: user.aptSuite || "",
+      city: user.city || "",
+      state: user.state || "",
+      zip: user.zipCode || "",
+      phone: user.phone || undefined,
+    }));
+  }, [user]);
+
+  useEffect(() => {
+    if (!profile || photoSeeded.current) return;
+    photoSeeded.current = true;
+    if (profile.photoUrl) setSavedPhotoUrl(profile.photoUrl);
+  }, [profile]);
+
+  const handleNext = async () => {
+    setSavingNext(true);
+    try {
+      const alpha2 = countries.all.find(
+        (c) => c.name === formData.country
+      )?.alpha2;
+
+      const userRes = await AuthAPI.updateMe({
+        dateOfBirth: formData.birthday || undefined,
+        countryCode: alpha2 || undefined,
+        streetAddress: formData.address || undefined,
+        aptSuite: formData.aptSuite || undefined,
+        city: formData.city || undefined,
+        state: formData.state || undefined,
+        zipCode: formData.zip || undefined,
+        phone: formData.phone || undefined,
+      });
+
+      const photoUrl = formData.photo
+        ? await fileToDataUrl(formData.photo)
+        : undefined;
+
+      const tpRes = await TalentAPI.updateProfile({
+        onboardingStep: "/nx/create-profile/submit",
+        ...(photoUrl ? { photoUrl } : {}),
+      });
+
+      if (tpRes?.profile) {
+        queryClient.setQueryData(["talent-profile"], {
+          profile: tpRes.profile,
+          account: tpRes.account ?? null,
+        });
+      }
+
+      let nextUser = userRes?.user ?? user;
+      if (nextUser && tpRes?.account) {
+        nextUser = {
+          ...nextUser,
+          accounts: nextUser.accounts.map((account: any) =>
+            account.id === tpRes.account.id
+              ? { ...account, ...tpRes.account }
+              : account
+          ),
+        };
+      }
+      if (nextUser) dispatch(setUser(nextUser));
+
+      router.push("/nx/create-profile/submit");
+    } finally {
+      setSavingNext(false);
+    }
+  };
 
   useEffect(() => {
     if (!formData.photo) {
@@ -334,6 +434,16 @@ export default function Location() {
           >
             {previewUrl ? (
               renderPhotoPreview(100)
+            ) : savedPhotoUrl ? (
+              <Image
+                src={savedPhotoUrl}
+                alt="Avatar"
+                width={100}
+                height={100}
+                unoptimized
+                className="rounded-full object-cover"
+                style={{ width: 100, height: 100 }}
+              />
             ) : (
               <Image src={AvatarImage} alt="Avatar" width={100} height={100} />
             )}
@@ -341,8 +451,8 @@ export default function Location() {
           <Button
             type="outline"
             size="medium"
-            label={formData?.photo ? "Edit photo" : "Upload photo"}
-            icon={formData?.photo ? "mdi:pencil-outline" : "mdi:plus"}
+            label={formData?.photo || savedPhotoUrl ? "Edit photo" : "Upload photo"}
+            icon={formData?.photo || savedPhotoUrl ? "mdi:pencil-outline" : "mdi:plus"}
             classname="font-medium! text-sm! py-1.5! px-5! rounded-full!"
             onClick={() => setAvatarOpen(true)}
           />
@@ -391,12 +501,12 @@ export default function Location() {
 
             <Input
               type="text"
-              name="address"
+              name="aptSuite"
               label="Apt/Suite"
               labelClassName="text-sm font-medium"
               placeholder="Apt/Suite (Optional)"
               classname="flex-1"
-              value={formData.address}
+              value={formData.aptSuite}
               onChange={handleInputChange}
             />
           </div>
@@ -434,7 +544,7 @@ export default function Location() {
               placeholder="Enter ZIP/Postal code"
               classname="flex-1"
               required
-              value={formData.city}
+              value={formData.zip}
               onChange={handleInputChange}
             />
           </div>
@@ -463,8 +573,9 @@ export default function Location() {
         <Button
           type="primary"
           label="Review your profile"
+          loading={savingNext}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/submit")}
+          onClick={handleNext}
         />
       </div>
 

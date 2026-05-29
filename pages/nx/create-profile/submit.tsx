@@ -39,68 +39,10 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
+import { useAppSelector } from "@/store/hooks";
 
 const EDITOR_PREVIEW_SIZE = 300;
-
-const INITIAL_WORK_HISTORY: Employment[] = [
-  {
-    title: "Software Engineer",
-    company: "Google",
-    location: { city: "San Francisco", country: "United States" },
-    startedAt: new Date(2021, 0, 1),
-    endAt: new Date(2023, 11, 1),
-    isCurrent: false,
-    description: "Worked on the Google Chrome team",
-  },
-  {
-    title: "Software Engineer",
-    company: "Google",
-    location: { city: "San Francisco", country: "United States" },
-    startedAt: new Date(2019, 0, 1),
-    endAt: new Date(2020, 11, 1),
-    isCurrent: false,
-    description: "Worked on the Google Chrome team",
-  },
-  {
-    title: "Software Engineer",
-    company: "Google",
-    location: { city: "San Francisco", country: "United States" },
-    startedAt: new Date(2017, 0, 1),
-    endAt: new Date(2018, 11, 1),
-    isCurrent: false,
-    description: "Worked on the Google Chrome team",
-  },
-];
-
-const INITIAL_EDUCATION: Education[] = [
-  {
-    school: "University of California, Berkeley",
-    degree: "Bachelor of Science",
-    fieldOfStudy: "Computer Science",
-    startedAt: 2020,
-    endAt: 2024,
-    description: "Worked on the Google Chrome team",
-  },
-  {
-    school: "University of California, Berkeley",
-    degree: "Bachelor of Science",
-    fieldOfStudy: "Computer Science",
-    startedAt: 2018,
-    endAt: 2020,
-    description: "Worked on the Google Chrome team",
-  },
-];
-
-const INITIAL_LANGUAGES: Language[] = [
-  {
-    name: "English",
-    level: "native",
-  },
-  {
-    name: "Spanish",
-    level: "fluent",
-  },
-];
 
 const LANGUAGE_LEVEL_OPTIONS = [
   { label: "Basic", value: "basic" },
@@ -210,31 +152,26 @@ const formatCurrency = (value: string) => {
 export default function Submit() {
   const [open, setOpen] = useState(false);
 
-  const [profileTitle, setProfileTitle] = useState("Accounting & Consulting");
+  const [profileTitle, setProfileTitle] = useState("");
   const [titleDraft, setTitleDraft] = useState(profileTitle);
   const [titleError, setTitleError] = useState<string | null>(null);
   const [titleOpen, setTitleOpen] = useState(false);
 
-  const [profileDescription, setProfileDescription] = useState(
-    "I like you are just a good man Let's do what we can do"
-  );
+  const [profileDescription, setProfileDescription] = useState("");
   const [descriptionDraft, setDescriptionDraft] = useState(profileDescription);
   const [descriptionOpen, setDescriptionOpen] = useState(false);
 
-  const [rateForm, setRateForm] = useState<RateForm>(buildRateForm("52.00"));
+  const [rateForm, setRateForm] = useState<RateForm>(buildRateForm(""));
   const [rateDraft, setRateDraft] = useState<RateForm>(rateForm);
   const [rateOpen, setRateOpen] = useState(false);
 
-  const [selectedSkills, setSelectedSkills] = useState<MockSkill[]>(
-    MOCK_SKILLS.slice(0, 5)
-  );
+  const [selectedSkills, setSelectedSkills] = useState<MockSkill[]>([]);
   const [skillDrafts, setSkillDrafts] = useState<MockSkill[]>(selectedSkills);
   const [skillSearch, setSkillSearch] = useState("");
   const [skillError, setSkillError] = useState<string | null>(null);
   const [skillsOpen, setSkillsOpen] = useState(false);
 
-  const [workHistory, setWorkHistory] =
-    useState<Employment[]>(INITIAL_WORK_HISTORY);
+  const [workHistory, setWorkHistory] = useState<Employment[]>([]);
   const [employmentOpen, setEmploymentOpen] = useState(false);
   const [employmentDraft, setEmploymentDraft] = useState<Employment>(
     createEmptyExperience()
@@ -243,8 +180,7 @@ export default function Submit() {
     number | null
   >(null);
 
-  const [educationHistory, setEducationHistory] =
-    useState<Education[]>(INITIAL_EDUCATION);
+  const [educationHistory, setEducationHistory] = useState<Education[]>([]);
   const [educationOpen, setEducationOpen] = useState(false);
   const [educationDraft, setEducationDraft] = useState<Education>(
     createEmptyEducation()
@@ -253,10 +189,8 @@ export default function Submit() {
     number | null
   >(null);
 
-  const [languages, setLanguages] = useState<Language[]>(INITIAL_LANGUAGES);
-  const [languageDrafts, setLanguageDrafts] = useState<LanguageDraft[]>(
-    INITIAL_LANGUAGES.map((language) => ({ ...language }))
-  );
+  const [languages, setLanguages] = useState<Language[]>([]);
+  const [languageDrafts, setLanguageDrafts] = useState<LanguageDraft[]>([]);
   const [languagesOpen, setLanguagesOpen] = useState(false);
 
   const [avatarOpen, setAvatarOpen] = useState(false);
@@ -276,6 +210,85 @@ export default function Submit() {
     offsetY: number;
   } | null>(null);
   const router = useRouter();
+  const { profile, complete, saving } = useOnboarding();
+  const { user } = useAppSelector((state) => state.user);
+  const seeded = useRef(false);
+
+  const displayName = user
+    ? `${user.firstName}${user.lastName ? ` ${user.lastName[0]}.` : ""}`
+    : "";
+  const countryName = user?.countryCode
+    ? countries.all.find((c) => c.alpha2 === user.countryCode)?.name
+    : undefined;
+  const locationText = [user?.city, countryName].filter(Boolean).join(", ");
+  const localTime = user?.timezone
+    ? new Date().toLocaleTimeString("en-US", {
+        timeZone: user.timezone,
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : "";
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+
+    if (profile.title) {
+      setProfileTitle(profile.title);
+      setTitleDraft(profile.title);
+    }
+    if (profile.overview) {
+      setProfileDescription(profile.overview);
+      setDescriptionDraft(profile.overview);
+    }
+    if (profile.hourlyRate != null) {
+      setRateForm(buildRateForm(String(profile.hourlyRate)));
+    }
+    if (profile.skills?.length) {
+      setSelectedSkills(
+        profile.skills.map((skill) => ({
+          label: skill.name,
+          value: skill.name,
+        }))
+      );
+    }
+    if (profile.employment?.length) {
+      setWorkHistory(
+        profile.employment.map((item: any) => ({
+          title: item.title || "",
+          company: item.company || "",
+          location: { city: item.city || "", country: item.country || "" },
+          isCurrent: Boolean(item.isCurrent),
+          startedAt: item.startedAt ? new Date(item.startedAt) : new Date(),
+          endAt: item.endAt ? new Date(item.endAt) : new Date(),
+          description: item.description || "",
+        }))
+      );
+    }
+    if (profile.education?.length) {
+      setEducationHistory(
+        profile.education.map((item: any) => ({
+          school: item.school || "",
+          degree: item.degree || "",
+          fieldOfStudy: item.fieldOfStudy || "",
+          startedAt: item.startedYear ?? null,
+          endAt: item.endYear ?? null,
+          description: item.description || "",
+        }))
+      );
+    }
+    if (profile.languages?.length) {
+      setLanguages(
+        profile.languages.map((language) => ({
+          name: language.name,
+          level: language.level,
+        }))
+      );
+    }
+    if (profile.photoUrl) {
+      setProfilePhotoUrl(profile.photoUrl);
+    }
+  }, [profile]);
 
   useEffect(() => {
     if (!profilePhoto) {
@@ -820,7 +833,9 @@ export default function Submit() {
 
         <div className="p-8 rounded-3xl bg-slate-50 flex items-center gap-8">
           <div className="w-3/4">
-            <h2 className="text-2xl font-medium">Looking good, Marco!</h2>
+            <h2 className="text-2xl font-medium">
+              Looking good{user?.firstName ? `, ${user.firstName}` : ""}!
+            </h2>
             <p className="text-sm mt-2">
               Make any edits you want, then submit your profile. You can make
               more changes after it’s live.
@@ -828,8 +843,9 @@ export default function Submit() {
             <Button
               type="primary"
               label="Submit profile"
+              loading={saving}
               classname="text-sm! font-medium! rounded-full! mt-6"
-              onClick={() => router.push("/nx/create-profile/finish")}
+              onClick={() => complete("/nx/create-profile/finish")}
             />
           </div>
 
@@ -867,16 +883,22 @@ export default function Submit() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-medium">Marti G.</h3>
-                  <div className="flex items-center gap-2 text-slate-800">
-                    <Icon
-                      icon="mdi:map-marker-outline"
-                      width={16}
-                      height={16}
-                    />
-                    <p className="text-sm">London, United Kingdom</p>
-                  </div>
-                  <p className="text-sm text-slate-600">11:37 PM local time</p>
+                  <h3 className="text-2xl font-medium">{displayName}</h3>
+                  {locationText && (
+                    <div className="flex items-center gap-2 text-slate-800">
+                      <Icon
+                        icon="mdi:map-marker-outline"
+                        width={16}
+                        height={16}
+                      />
+                      <p className="text-sm">{locationText}</p>
+                    </div>
+                  )}
+                  {localTime && (
+                    <p className="text-sm text-slate-600">
+                      {localTime} local time
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -1120,10 +1142,18 @@ export default function Submit() {
                   <span>Phone number:</span>
                   <div className="flex items-center gap-2 mt-1">
                     <Icon
-                      icon="mdi:verified"
-                      className="w-5 h-5 text-blue-600"
+                      icon={
+                        user?.phoneVerified
+                          ? "mdi:verified"
+                          : "mdi:alert-circle-outline"
+                      }
+                      className={`w-5 h-5 ${
+                        user?.phoneVerified ? "text-blue-600" : "text-slate-400"
+                      }`}
                     />
-                    <span className="text-slate-600">Verified</span>
+                    <span className="text-slate-600">
+                      {user?.phoneVerified ? "Verified" : "Not verified"}
+                    </span>
                   </div>
                 </li>
               </ul>

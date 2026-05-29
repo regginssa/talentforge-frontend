@@ -2,11 +2,12 @@ import { Button, Checkbox } from "@/components/atoms";
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import CategoriesAPI from "@/lib/api/categories";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 export default function Categories() {
   const {
@@ -24,12 +25,23 @@ export default function Categories() {
   const [selectedSpecialties, setSelectedSpecialties] = useState<string[]>([]);
   const [showInfo, setShowInfo] = useState(false);
   const router = useRouter();
+  const { profile, saveStep, saving } = useOnboarding();
+  const seeded = useRef(false);
 
   useEffect(() => {
     if (error) {
       toast.error("Failed to fetch categories", { position: "top-center" });
     }
   }, [error]);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.category?.slug) setSelectedCategorySlug(profile.category.slug);
+    if (profile.specialties?.length) {
+      setSelectedSpecialties(profile.specialties.map((s) => s.slug));
+    }
+  }, [profile]);
 
   const activeCategory = useMemo(
     () => categories?.find((c) => c.slug === selectedCategorySlug),
@@ -164,8 +176,17 @@ export default function Categories() {
         <Button
           type="primary"
           label="Next, add your skills"
+          loading={saving}
           classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-          onClick={() => router.push("/nx/create-profile/skills")}
+          onClick={() =>
+            saveStep(
+              {
+                categorySlug: selectedCategorySlug,
+                specialties: selectedSpecialties,
+              },
+              "/nx/create-profile/skills"
+            )
+          }
         />
       </div>
     </CreateProfileLayout>

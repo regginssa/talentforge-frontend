@@ -1,11 +1,12 @@
 import { CreateProfileLayout } from "@/components/layouts/create-profile/CreateProfileLayout";
 import { GoalType } from "@/types/user";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const MoneyPack = require("@/public/assets/svgs/icons/other/money_pack.svg");
 const Pay = require("@/public/assets/svgs/icons/other/pay.svg");
@@ -38,6 +39,14 @@ const radios = [
 export default function Goal() {
   const [goal, setGoal] = useState<GoalType>("gain_experience");
   const router = useRouter();
+  const { profile, saveStep, skipStep, saving, skipping } = useOnboarding();
+  const seeded = useRef(false);
+
+  useEffect(() => {
+    if (!profile || seeded.current) return;
+    seeded.current = true;
+    if (profile.goal) setGoal(profile.goal);
+  }, [profile]);
 
   return (
     <CreateProfileLayout
@@ -95,15 +104,22 @@ export default function Goal() {
         </motion.button>
 
         <div className="flex items-center gap-4">
-          <button className="py-2 px-4 text-sm font-medium hover:underline">
+          <button
+            disabled={skipping}
+            className="py-2 px-4 text-sm font-medium hover:underline disabled:opacity-50"
+            onClick={() => skipStep("/nx/create-profile/work-preference")}
+          >
             Skip for now
           </button>
 
           <Button
             type="primary"
             label="Next"
+            loading={saving}
             classname="font-medium! text-sm! py-2.5! px-5! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/work-preference")}
+            onClick={() =>
+              saveStep({ goal }, "/nx/create-profile/work-preference")
+            }
           />
         </div>
       </div>

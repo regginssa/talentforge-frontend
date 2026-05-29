@@ -11,11 +11,23 @@ import {
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useAppSelector } from "@/store/hooks";
 
 const TOP_RATED_PLUS = require("@/public/assets/svgs/icons/badges/top_rated_plus.svg");
 
 export default function CreateProfile() {
   const router = useRouter();
+  const { user } = useAppSelector((state) => state.user);
+
+  // Resume where the freelancer left off, or start at the first step.
+  const talent = user?.accounts.find((account) => account.type === "talent");
+  console.log(talent);
+  const resumePath =
+    talent &&
+    !talent.onboardingCompleted &&
+    talent.onboardingStep !== "/nx/create-profile"
+      ? talent.onboardingStep
+      : "/nx/create-profile/experience";
 
   return (
     <OnboardingLayout
@@ -28,7 +40,8 @@ export default function CreateProfile() {
       <div className="w-7xl mx-auto flex items-stretch gap-20">
         <div className="flex-1 space-y-8 min-w-0">
           <h3 className="text-3xl">
-            Hey John. Ready for your next big opportunity?
+            Hey {user?.firstName || "there"}. Ready for your next big
+            opportunity?
           </h3>
 
           <ul className="text-slate-900 text-sm">
@@ -59,7 +72,7 @@ export default function CreateProfile() {
               type="primary"
               label="Get started"
               classname="font-semibold! text-sm! rounded-full! py-3! px-5!"
-              onClick={() => router.push("/nx/create-profile/experience")}
+              onClick={() => router.push(resumePath as string)}
             />
             <p className="text-sm text-slate-600">
               It only takes 5-10 minutes and you can edit it later. We’ll save

@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { ResumeViewer } from "@/components/molecules/ResumeViewer";
+import { useOnboarding } from "@/hooks/useOnboarding";
 
 const ACCEPTED_TYPES = [
   "application/pdf",
@@ -27,6 +28,7 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export default function ResumeImport() {
   const router = useRouter();
+  const { saveStep, saving } = useOnboarding();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -191,8 +193,14 @@ export default function ResumeImport() {
             type="outline"
             size="medium"
             label="Fill out manually (15 min)"
+            loading={saving}
             classname="font-medium! text-sm! py-2.5! w-full! rounded-full!"
-            onClick={() => router.push("/nx/create-profile/categories")}
+            onClick={() =>
+              saveStep(
+                { importSource: "manual" },
+                "/nx/create-profile/categories"
+              )
+            }
           />
         </div>
         <div className="flex-1"></div>
