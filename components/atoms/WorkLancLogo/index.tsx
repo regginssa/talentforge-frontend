@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/assets/logos/logo.png";
+import Logo from "@/public/assets/logos/logo.svg";
 
 interface WorklancLogoProps {
   className?: string;
@@ -19,11 +19,12 @@ const WorklancLogo: React.FC<WorklancLogoProps> = ({
       <Image
         src={Logo}
         alt="Worklanc logo"
-        width={200}
-        height={70}
+        width={60}
+        height={60}
         className="object-contain"
         priority
       />
+      <h1 className="text-2xl font-bold">Worklanc</h1>
     </Link>
   );
 };
