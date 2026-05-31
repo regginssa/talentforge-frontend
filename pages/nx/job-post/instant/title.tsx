@@ -16,8 +16,8 @@ export default function JobPostTitle() {
       }}
       step={1}
       nextLabel="Next: Skills"
-      nextDisabled
       onBack={() => router.back()}
+      onNext={() => router.push("/nx/job-post/instant/skills")}
     >
       <div className="flex items-start gap-10">
         <div className="flex-1">

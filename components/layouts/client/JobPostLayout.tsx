@@ -42,6 +42,7 @@ export default function JobPostLayout({
             <motion.button
               whileTap={{ scale: 0.95 }}
               className="py-2 px-4 cursor-pointer transition-colors duration-200 hover:bg-slate-50 rounded-full text-sm border border-slate-400"
+              onClick={onBack}
             >
               Back
             </motion.button>
@@ -50,6 +51,7 @@ export default function JobPostLayout({
               label={nextLabel}
               disabled={!!nextDisabled}
               classname="py-2! px-4! text-sm! font-medium! rounded-full!"
+              onClick={onNext}
             />
           </div>
         )}
