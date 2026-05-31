@@ -4,8 +4,11 @@ import AIIcon from "@/public/assets/svgs/icons/other/ai.svg";
 import Image from "next/image";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Welcome() {
+  const router = useRouter();
+
   return (
     <ClientLayout
       seo={{
@@ -39,6 +42,7 @@ export default function Welcome() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             className="py-2.5 px-5 text-sm font-medium text-blue-600 cursor-pointer"
+            onClick={() => router.push("/nx/job-post/instant/title")}
           >
             I'll do it without AI
           </motion.button>
