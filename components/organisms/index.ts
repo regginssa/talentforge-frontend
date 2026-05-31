@@ -5,5 +5,5 @@ export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
 export { default as NavHoverDropdown } from "./NavHoverDropdown";
 export { default as CreateProfileHeader } from "./CreateProfileHeader";
-export { default as AuthorizedHeader } from "./AuthorizedHeader";
+export { default as FreelancerHeader } from "./FreelancerHeader";
 export { default as AuthorizedFooter } from "./AuthorizedFooter";

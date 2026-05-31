@@ -1,5 +1,5 @@
 import { SEO } from "@/components/atoms";
-import { AuthorizedFooter, AuthorizedHeader } from "@/components/organisms";
+import { AuthorizedFooter, FreelancerHeader } from "@/components/organisms";
 import { TSEO } from "@/types/components.types";
 
 interface FreelancerLayoutProps {
@@ -13,7 +13,7 @@ export default function FreelancerLayout({
 }: FreelancerLayoutProps) {
   return (
     <>
-      <AuthorizedHeader />
+      <FreelancerHeader />
       <SEO {...seo} />
       <main className="max-w-7xl mx-auto space-y-10">{children}</main>
       <AuthorizedFooter />
