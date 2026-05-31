@@ -6,3 +6,4 @@ export { default as ServicesLayout } from "./ServicesLayout";
 export { default as ServicesSubcatLayout } from "./ServicesSubcatLayout";
 export { default as FreelancerLayout } from "./freelancers";
 export { default as FreelancerSettingsLayout } from "./freelancers/SettingsLayout";
+export { default as ClientLayout } from "./client";

@@ -12,9 +12,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function OneMonthTrialNetNew1() {
   const [open, setOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -29,7 +32,7 @@ export default function OneMonthTrialNetNew1() {
             <WorklancLogo />
           </header>
 
-          <main className="flex-1 mt-20 w-[80%] mx-auto">
+          <main className="flex-1 mt-16 w-[80%] mx-auto">
             <div className="flex-1 space-y-10">
               <div className="space-y-4">
                 <p className="uppercase text-sm">
@@ -130,7 +133,7 @@ export default function OneMonthTrialNetNew1() {
           </DialogHeader>
 
           <div className="px-4 pb-4 no-scrollbar max-h-[60vh] overflow-y-auto flex items-start gap-4">
-            <Checkbox />
+            <Checkbox checked={checked} onCheck={() => setChecked(!checked)} />
 
             <div>
               <p className="text-sm">
@@ -171,7 +174,8 @@ export default function OneMonthTrialNetNew1() {
               type="primary"
               label="Start Business Plus trial"
               classname="py-2.5! px-5! font-medium! text-sm! rounded-full!"
-              disabled
+              disabled={!checked}
+              onClick={() => router.push("/nx/job-post/instant/welcome")}
             />
           </DialogFooter>
         </DialogContent>
