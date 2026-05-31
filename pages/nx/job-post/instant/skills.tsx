@@ -20,8 +20,8 @@ export default function Skills() {
       }}
       step={2}
       nextLabel="Next: Scope"
-      nextDisabled
       onBack={() => router.back()}
+      onNext={() => router.push("/nx/job-post/instant/duration")}
     >
       <div className="flex items-start gap-10">
         <div className="flex-1">

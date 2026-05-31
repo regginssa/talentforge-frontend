@@ -28,3 +28,4 @@ export { default as PhoneInput } from "./PhoneInput";
 export { default as InputOTP } from "./InputOTP";
 export { default as IconButton } from "./IconButton";
 export { default as CircleProgress } from "./CircleProgress";
+export { default as RadioGroup } from "./RadioGroup";
