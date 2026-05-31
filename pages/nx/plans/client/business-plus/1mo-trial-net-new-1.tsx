@@ -1,9 +1,21 @@
-import { Button, SEO, WorklancLogo } from "@/components/atoms";
+import { Button, Checkbox, SEO, WorklancLogo } from "@/components/atoms";
 import PeopleImage from "@/public/assets/webps/people/people.webp";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 export default function OneMonthTrialNetNew1() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex items-stretch">
@@ -77,6 +89,7 @@ export default function OneMonthTrialNetNew1() {
                   type="primary"
                   label="Start Business Plus trial"
                   classname="py-2.5! px-4! font-medium! text-sm! rounded-full!"
+                  onClick={() => setOpen(true)}
                 />
               </div>
             </div>
@@ -102,6 +115,67 @@ export default function OneMonthTrialNetNew1() {
           />
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="flex min-w-3xl flex-col">
+          <DialogHeader className="shrink-0 p-4">
+            <DialogTitle className="text-2xl">
+              Start 30-day Business Plus trial
+            </DialogTitle>
+            <DialogDescription>
+              After 30 days, your plan will continue at the standard Business
+              Plus rate unless your change or cancel. We’ll send a reminder
+              before the trial ends.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="px-4 pb-4 no-scrollbar max-h-[60vh] overflow-y-auto flex items-start gap-4">
+            <Checkbox />
+
+            <div>
+              <p className="text-sm">
+                By checking the box, you authorize Worklanc to charge your
+                primary or selected billing method the applicable Business Plus
+                Promotional Fee during the 30-day promotional period: 3% if
+                paying by ACH, or 5% if paying by any other method, on all
+                service contracts and transactions subject to the client service
+                fee.
+              </p>
+              <p className="text-xs text-slate-600 mt-1">
+                By checking the box, you authorize Worklanc to charge your
+                primary or selected billing method the applicable Business Plus
+                Promotional Fee during the 30-day promotional period: 3% if
+                paying by ACH, or 5% if paying by any other method, on all
+                service contracts and transactions subject to the client service
+                fee. After your 30-day promotional period ends, the standard
+                Business Plus Fee of 8% if paying by ACH or 10% if paying by any
+                other method, will apply automatically, and your plan will renew
+                on a 30-day cycle at that fee rate. You may cancel or change
+                your plan at any time before or after the promotional period
+                ends. Our standard Fees Terms apply.
+              </p>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <DialogClose asChild>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                className="py-2.5 px-5 font-medium text-sm cursor-pointer"
+              >
+                Close
+              </motion.button>
+            </DialogClose>
+
+            <Button
+              type="primary"
+              label="Start Business Plus trial"
+              classname="py-2.5! px-5! font-medium! text-sm! rounded-full!"
+              disabled
+            />
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
