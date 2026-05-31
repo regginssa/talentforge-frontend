@@ -137,16 +137,6 @@ export default function ClientHeader() {
 
   const profileNavs = [
     {
-      label: "Your profile",
-      icon: "material-symbols-light:account-circle-outline",
-      href: "#",
-    },
-    {
-      label: "Stats and trends",
-      icon: "material-symbols-light:trending-up",
-      href: "/nx/my-stats",
-    },
-    {
       label: "Account health",
       icon: "material-symbols-light:av-timer",
       href: "#",
@@ -159,8 +149,8 @@ export default function ClientHeader() {
     },
 
     {
-      label: "Connects",
-      icon: "material-symbols-light:av-timer",
+      label: "Invite a coworker",
+      icon: "material-symbols-light:supervisor-account-outline",
       href: "#",
     },
 
@@ -226,7 +216,7 @@ export default function ClientHeader() {
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className="absolute bg-white top-full w-[280px] right-0 max-h-[420px] overflow-y-auto text-sm z-40 mt-1 shadow-md py-1 rounded-lg border border-slate-200"
                 >
-                  <div className="py-1 border-b border-slate-200">
+                  <div className="py-1">
                     <div className="flex items-center gap-2 p-4 hover:bg-slate-100 cursor-pointer">
                       <Image
                         src={UserPic}
@@ -235,7 +225,7 @@ export default function ClientHeader() {
                       />
                       <div className="flex flex-col items-start">
                         <h3 className="text-sm font-medium">Jhon Smthi</h3>
-                        <p className="text-xs text-slate-600">Freelancer</p>
+                        <p className="text-xs text-slate-600">Basic</p>
                       </div>
                     </div>
 
@@ -245,8 +235,24 @@ export default function ClientHeader() {
                     </div>
                   </div>
 
-                  <ul className="py-1 border-b border-slate-200">
-                    {profileNavs.slice(0, 2).map((nav, index) => (
+                  <div className="px-2 mt-2">
+                    <div className="border-2 border-blue-200 rounded-md p-4">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-sm font-medium">
+                          Try Business Plus
+                        </h3>
+                        <Icon icon="mdi:arrow-right" className="w-5 h-5" />
+                      </div>
+
+                      <p className="mt-2 text-xs text-slate-600">
+                        Upgrade for quicker access to the top 1% of freelancers.
+                        No upfront costs
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="py-1">
+                    {profileNavs.map((nav, index) => (
                       <li
                         key={nav.label}
                         className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
@@ -260,39 +266,6 @@ export default function ClientHeader() {
                         </Link>
                       </li>
                     ))}
-                  </ul>
-
-                  <ul className="py-1 border-b border-slate-200">
-                    {profileNavs.slice(2, 6).map((nav, index) => (
-                      <li
-                        key={nav.label}
-                        className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
-                      >
-                        <Link
-                          href={nav.href}
-                          className="flex items-center gap-4"
-                        >
-                          {" "}
-                          <Icon icon={nav.icon} className="w-5 h-5" />
-                          <span className="text-sm">{nav.label}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <ul className="py-1 border-b border-slate-200">
-                    <li
-                      key={profileNavs[6].label}
-                      className="px-4 py-2 rounded-md hover:bg-slate-100 cursor-pointer"
-                    >
-                      <Link
-                        href={profileNavs[6].href}
-                        className="flex items-center gap-4"
-                      >
-                        <Icon icon={profileNavs[6].icon} className="w-5 h-5" />
-                        <span className="text-sm">{profileNavs[6].label}</span>
-                      </Link>
-                    </li>
                   </ul>
                 </motion.ul>
               )}
