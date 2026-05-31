@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SocialGroup } from "../molecules";
 import { Icon } from "@iconify/react";
 
-export default function FreelancerFooter() {
+export default function AuthorizedFooter() {
   const navs = [
     { label: "About Us", href: "#" },
     { label: "Feedback", href: "#" },

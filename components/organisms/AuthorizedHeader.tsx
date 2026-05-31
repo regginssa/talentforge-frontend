@@ -71,7 +71,7 @@ function HoverNavMenu({ label, sections }: HoverNavMenuProps) {
   );
 }
 
-export default function FreelancerHeader() {
+export default function AuthorizedHeader() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
