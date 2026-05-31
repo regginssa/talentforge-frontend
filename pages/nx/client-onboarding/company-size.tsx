@@ -1,5 +1,6 @@
 import { Button, Input, SEO } from "@/components/atoms";
 import { AuthorizedFooter, CreateProfileHeader } from "@/components/organisms";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const sizes = [
@@ -17,6 +18,7 @@ export default function CompanySize() {
     url: "",
     size: "",
   });
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -79,6 +81,9 @@ export default function CompanySize() {
             type="primary"
             label="Continue"
             classname="py-2.5! px-5! rounded-full! text-sm! font-medium!"
+            onClick={() =>
+              router.push("/nx/plans/client/business-plus/1mo-trial-net-new-1")
+            }
           />
         </div>
       </main>
